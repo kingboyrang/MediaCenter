@@ -11,4 +11,12 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "UIImage-Extensions.h"
+    #import "AppConfigure.h"
+    #import "UINavigationBar+CustomNavigatorBar.h"
+    #import "DataType.h"
+    #import "NSString+StringExtension.h"
+    #import "AppHelper.h"
+    #import "UIDevice+IdentifierAddition.h"
+    #import "UINavigationItem+CustomNavigationItem.h"
 #endif

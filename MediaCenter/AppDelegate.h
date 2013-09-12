@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+#import "ServiceHelper.h"
+#import <QuickLook/QuickLook.h>
+#import "NetWorkConnection.h"
+@interface AppDelegate : UIResponder <NetWorkDelegate,ServiceHelperDelegate,UIApplicationDelegate>{
+    ServiceHelper *helper;
+    
+}
 @property (strong, nonatomic) UIWindow *window;
-
+//推播
+-(void)reRegisterApns;
+//推播处理
+-(void)pushHandler:(NSDictionary*)userInfo;
 @end
