@@ -50,6 +50,11 @@
     [network setHasConnection:YES];
     [network ListenerConection:@"http://www.apple.com" delegate:self];
     
+    int cacheSizeMemory = 4*1024*1024; // 4MB
+    int cacheSizeDisk = 32*1024*1024; // 32MB
+    NSURLCache *sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
+    [NSURLCache setSharedURLCache:sharedCache];
+    
     return YES;
 }
 -(void)NetWorkHandler:(NetworkStatus)status IsConnection:(BOOL)hasConnection{
@@ -88,6 +93,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 #pragma mark -
 #pragma mark 本地通知

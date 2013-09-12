@@ -13,7 +13,7 @@
 -(void)stopMovieScroll:(int)curMovie;
 @end
 
-@interface MovieScroll : UIView<UIScrollViewDelegate>{
+@interface MovieScroll : UIView<UIScrollViewDelegate,UIWebViewDelegate>{
    int curPage;
    //MPMoviePlayerController *player;
     MPMoviePlayerViewController *moviePlayer;
@@ -25,6 +25,7 @@
 @property(nonatomic,retain) NSArray *youtubeList;
 
 -(id)initWithData:(NSArray*)arr frame:(CGRect)frame;
+-(id)initWithData:(NSArray*)arr youtube:(NSArray*)youtu frame:(CGRect)frame;
 -(void)loadConfigure:(CGRect)frame;
 -(void)startMovie:(int)page;
 //开始播放影片

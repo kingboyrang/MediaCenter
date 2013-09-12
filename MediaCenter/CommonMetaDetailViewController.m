@@ -177,7 +177,7 @@
         for (NSDictionary *dic in self.listData) {
             if (type==2) {//影音
                 if ([dic objectForKey:@"YoutubeVideo"]!=nil&&[[dic objectForKey:@"YoutubeVideo"] length]>0) {
-                    [youtubeArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:[dic objectForKey:@"YoutubeVideo"],[NSString stringWithFormat:@"%d",index], nil]];
+                    [youtubeArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:[dic objectForKey:@"YoutubeVideo"],@"value",[NSString stringWithFormat:@"%d",index],@"key", nil]];
                 }
                 [movieArr addObject:[SearchMetaData formatImageUrl:[dic objectForKey:@"MP4Path"]]];
             }else{//声音
@@ -186,9 +186,9 @@
             index++;
             
         }
-        //NSLog(@"movieArr=%@\n",movieArr);
-        MovieScroll *movieScroll=[[MovieScroll alloc] initWithData:movieArr frame:CGRectMake(0, 0, self.view.frame.size.width, h)];
-        movieScroll.youtubeList=youtubeArr;
+        //NSLog(@"youtubeArr=%@\n",youtubeArr);
+        //MovieScroll *movieScroll=[[MovieScroll alloc] initWithData:movieArr frame:CGRectMake(0, 0, self.view.frame.size.width, h)];
+       MovieScroll *movieScroll=[[MovieScroll alloc] initWithData:movieArr youtube:youtubeArr frame:CGRectMake(0, 0, self.view.frame.size.width, h)];
         movieScroll.tag=600;
         movieScroll.delegate=self;
         //[self.view addSubview:movieScroll];

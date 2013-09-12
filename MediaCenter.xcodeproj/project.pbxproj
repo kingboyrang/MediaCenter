@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		013FB79117E1C4A70077770E /* youtube.html in Resources */ = {isa = PBXBuildFile; fileRef = 013FB79017E1C4A70077770E /* youtube.html */; };
+		013FB7D317E1F41A0077770E /* youtube.html in Resources */ = {isa = PBXBuildFile; fileRef = 013FB7D217E1F41A0077770E /* youtube.html */; };
 		015486EA1651EC6D0001C3F9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 015486E91651EC6D0001C3F9 /* Entitlements.plist */; };
 		018CA6D816633C820086397A /* OrganViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018CA6D716633C820086397A /* OrganViewController.m */; };
 		018CA70116647A590086397A /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018CA70016647A590086397A /* PushViewController.m */; };
@@ -172,7 +172,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		013FB79017E1C4A70077770E /* youtube.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = youtube.html; sourceTree = "<group>"; };
+		013FB7D217E1F41A0077770E /* youtube.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = youtube.html; sourceTree = "<group>"; };
 		015486E91651EC6D0001C3F9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		018CA6D616633C820086397A /* OrganViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganViewController.h; sourceTree = "<group>"; };
 		018CA6D716633C820086397A /* OrganViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganViewController.m; sourceTree = "<group>"; };
@@ -634,7 +634,7 @@
 		01B6E9D81648968700A43E74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				013FB79017E1C4A70077770E /* youtube.html */,
+				013FB7D217E1F41A0077770E /* youtube.html */,
 				26B4E9F4165BADDD00EA5F66 /* datatable.xml */,
 				01B6E9F71648976F00A43E74 /* images */,
 				01B6E9D91648968700A43E74 /* MediaCenter-Info.plist */,
@@ -1138,7 +1138,7 @@
 				01B89E1A17E1534D006C787D /* blueArrowDown.png in Resources */,
 				01B89E1B17E1534D006C787D /* blueArrowDown@2x.png in Resources */,
 				01B89E2617E15DBF006C787D /* red_background.png in Resources */,
-				013FB79117E1C4A70077770E /* youtube.html in Resources */,
+				013FB7D317E1F41A0077770E /* youtube.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,9 +21,7 @@
     if (self) {
         // Initialization code
         [self loadConfigure:frame];
-        if (!_webView) {
-            _webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.width)];
-        }
+       
         
     }
     return self;
@@ -31,6 +29,10 @@
 -(id)initWithData:(NSArray*)arr frame:(CGRect)frame{
     self.listData=arr;
     return [self initWithFrame:frame];
+}
+-(id)initWithData:(NSArray*)arr youtube:(NSArray*)youtu frame:(CGRect)frame{
+    self.youtubeList=youtu;
+    return [self initWithData:arr frame:frame];
 }
 -(void)loadConfigure:(CGRect)frame{
     self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width,frame.size.height)];
@@ -91,6 +93,7 @@
     
     [self addSubview:self.scrollView];
     curPage=0;
+    [self loadYouTuBeMoive:curPage];
 }
 //开始播放影片
 -(void)preStartMovie{
@@ -126,7 +129,7 @@
     
 
     
-    
+    [self loadYouTuBeMoive:page];
    
 }
 #pragma -
@@ -185,9 +188,81 @@
 #pragma mark private methods
 -(void)loadYouTuBeMoive:(NSInteger)index{
     if ([self.youtubeList count]>0) {
-        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.key== %@",[NSString stringWithFormat:@"%d",index]];
+        NSArray *results = [self.youtubeList filteredArrayUsingPredicate:predicate];
+        if ([results count]>0) {
+            NSDictionary *dic=[results objectAtIndex:0];
+            //NSString *path=[[NSBundle mainBundle] pathForResource:@"youtube" ofType:@"html"];
+            //NSString *html=[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+            //html=[NSString stringWithFormat:html,@"100%",(int)self.scrollView.bounds.size.height,[dic objectForKey:@"value"]];
+             //NSLog(@"%@\n",html);
+            CGRect frame=self.scrollView.bounds;
+            frame.origin.x=index*frame.size.width;
+            if (!_webView) {
+                _webView=[[UIWebView alloc] initWithFrame:frame];
+                //_webView.delegate=self;
+            }
+            
+            
+             MPMoviePlayerController *player = [moviePlayer moviePlayer];
+            [UIView animateWithDuration:0.5f animations:^{
+                player.view.alpha=0.0;
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [self.scrollView sendSubviewToBack:player.view];
+                    player.view.hidden=YES;
+                    
+                    if (![self.scrollView.subviews containsObject:_webView]) {
+                        [self.scrollView addSubview:_webView];
+                    }
+                    
+                    
+                    NSString *htmlString = @"<html><head>\
+                    <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = \"100%\"\"/></head>\
+                    <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+                    <iframe id=\"ytplayer\" type=\"text/html\" width=\"100%\" height=\"240\"\
+                    src=\"http://www.youtube.com/embed/%@?autoplay=1\"\
+                    frameborder=\"0\"/>\
+                    </body></html>";
+                    
+                    htmlString = [NSString stringWithFormat:htmlString, [dic objectForKey:@"value"], [dic objectForKey:@"value"]];
+                    
+                    [_webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
+
+                    /***
+                    NSString *cachesDir =NSTemporaryDirectory();
+                    NSString *savePath=[cachesDir stringByAppendingPathComponent:@"youtube.html"];
+                    [html writeToFile:savePath atomically:NO encoding:NSUTF8StringEncoding error:nil];
+                    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:savePath]];
+                    [_webView loadRequest:request];
+                    [_webView reload];
+                    //[_webView loadHTMLString:html baseURL:nil];
+                     ***/
+                    
+                }
+            }];
+            
+        }else{
+            if ([self.scrollView.subviews containsObject:_webView]) {
+                [_webView removeFromSuperview];
+                _webView.delegate=nil;
+                [_webView stopLoading];
+                [_webView release],_webView=nil;
+            }
+             MPMoviePlayerController *player = [moviePlayer moviePlayer];
+            if (player.view.hidden) {
+                player.view.hidden=NO;
+                player.view.alpha=1.0;
+            }
+        }
     }
 }
+/***
+#pragma mark UIWebViewDelegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"WebKitCacheModelPreferenceKey"];
+}
+ ***/
 -(void)dealloc{
     [super dealloc];
     [scrollView release];
@@ -196,6 +271,8 @@
     [moviePlayer release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if (_webView) {
+        _webView.delegate=nil;
+        [_webView stopLoading];
         [_webView release],_webView=nil;
     }
     
