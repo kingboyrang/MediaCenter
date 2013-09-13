@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ServiceHelper.h"
 #import "BasicViewController.h"
-@interface DistrictViewController : BasicViewController<ServiceHelperDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>{
+#import "PullingRefreshTableView.h"
+@interface DistrictViewController : BasicViewController<PullingRefreshTableViewDelegate,ServiceHelperDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>{
     int curPage;
     int pageSize;
     int maxPage;
@@ -17,8 +18,10 @@
     
     ServiceHelper *helper;
     int selectRow;
+    
+    PullingRefreshTableView *_tableView;
 }
-@property(nonatomic,retain) UITableView *tabView;
+@property (nonatomic) BOOL refreshing;
 @property(nonatomic,retain) NSString *keyWord;
 @property(nonatomic,retain) NSMutableArray *listData;
 //打开链接

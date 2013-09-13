@@ -39,9 +39,13 @@
 }
 //开始查询
 -(void)loadingData{
-    if (!self.sourceData) {
+    if (self.sourceData==nil||[self.sourceData count]==0) {
         govCurPage=0;
-        govMaxPage=10;
+        govPageSize=10;
+        if ([AppHelper isIPad]) {
+            govPageSize=20;
+        }
+        govMaxPage=1;
         _isFirst=YES;
         //第1次加载执时[下拉加载]
         [_tableView launchRefreshing];//默认加载10笔数据
@@ -51,13 +55,13 @@
 -(void)updateSourceData:(NSString*)xml{
     NSString *page=nil;
     NSMutableArray *arr=[News XmlToArray:xml withMaxPage:&page];
-    govMaxPage=[page intValue];
-    if (!arr) {
+    if (arr==nil||[arr count]==0) {
         [_tableView tableViewDidFinishedLoadingWithMessage:@"沒有返回數據!"];
         _tableView.reachedTheEnd  = NO;
         govCurPage--;
         return;
     }
+    govMaxPage=[page intValue];
     if (_isFirst) {
         _isFirst=NO;
         self.sourceData=[NSMutableArray arrayWithArray:arr];
@@ -66,7 +70,7 @@
         NSMutableArray *insertIndexPaths = [NSMutableArray arrayWithCapacity:10];
         for (int i=0; i<[arr count]; i++) {
             [self.sourceData addObject:[arr objectAtIndex:i]];
-            NSIndexPath *newPath=[NSIndexPath indexPathForRow:(govCurPage-1)*govMaxPage+i inSection:0];
+            NSIndexPath *newPath=[NSIndexPath indexPathForRow:(govCurPage-1)*govPageSize+i inSection:0];
             [insertIndexPaths addObject:newPath];
         }
         //重新呼叫UITableView的方法, 來生成行.
@@ -76,7 +80,7 @@
     }
 }
 -(void)loadSourceData{
-    NSString *soap=[MediaSoapMessage WebNewsByTypeSoap:[NSString stringWithFormat:@"%d",self.newsType] withCurPage:govCurPage withCurSize:govMaxPage];
+    NSString *soap=[MediaSoapMessage WebNewsByTypeSoap:[NSString stringWithFormat:@"%d",self.newsType] withCurPage:govCurPage withCurSize:govPageSize];
     [_helper AsyServiceMethod:@"GetWebNewsByType" SoapMessage:soap];
 }
 -(void)loadData{
@@ -84,7 +88,6 @@
         self.refreshing=NO;
     }
     if (![[NetWorkConnection sharedInstance] hasConnection]) {
-        [_tableView tableViewDidFinishedLoading];
         _tableView.reachedTheEnd  = NO;
         [_tableView tableViewDidFinishedLoadingWithMessage:@"請檢查網絡連接.."];
         return;
@@ -116,7 +119,6 @@
     }
    else if(self.newsType==5) {//懲材公告
     }
-    
     if (self.newsType==6) {//最新影音
     }
     [self performSelectorOnMainThread:@selector(updateSourceData:) withObject:responseText waitUntilDone:NO];

@@ -8,26 +8,6 @@
         <scene sceneID="41n-TE-yrV">
             <objects>
                 <tableViewController id="dlq-oN-yVe" customClass="ProductTypeViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kze-th-irg">
-                        <rect key="frame" x="0.0" y="20" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="HRS-1e-AC2">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="dlq-oN-yVe" id="LIw-0J-UYb"/>
-                            <outlet property="delegate" destination="dlq-oN-yVe" id="aDR-Ba-yqq"/>
-                        </connections>
-                    </tableView>
                     <navigationItem key="navigationItem" title="數位出版品" id="ec9-zB-ayg">
                         <barButtonItem key="leftBarButtonItem" title="返回" id="xLU-Pu-Dgp">
                             <connections>
@@ -36,19 +16,25 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="view" destination="eq2-Kr-5I9" id="vxb-Tb-SmC"/>
                         <segue destination="yjA-Vx-1jG" kind="push" identifier="produceToDetail" id="QHk-Jo-WvB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K01-XJ-5vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="eq2-Kr-5I9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="812" y="-467"/>
+            <point key="canvasLocation" x="838" y="-464"/>
         </scene>
         <!--Push View Controller - 推播訊息中心-->
         <scene sceneID="gsq-jE-amt">
             <objects>
                 <tableViewController id="JQm-ta-jSV" customClass="PushViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kzb-f5-om8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -99,7 +85,7 @@
             <objects>
                 <viewController storyboardIdentifier="PushDetailViewController" id="AQz-r5-Swp" customClass="PushDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y99-xB-KaV">
-                        <rect key="frame" x="0.0" y="20" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -198,7 +184,7 @@
             <objects>
                 <tableViewController id="yjA-Vx-1jG" customClass="CommonMetaDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a6y-fW-CTf">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -484,7 +470,7 @@
             <objects>
                 <viewController title="最新消息" id="Q0F-Tm-s9o" customClass="NewsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eyL-96-Crv">
-                        <rect key="frame" x="0.0" y="20" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -590,7 +576,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="248"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="dcW-g1-MAl">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="dcW-g1-MAl">
                                                     <string key="text">宜蘭縣政府全新規劃「數位媒體資料中心」，打造數位影音內容典藏平台，提供繁榮經濟、安心社會、多元文化、保育環境、和諧城鄉、全人教育等六大施政面向，同時並結合最新的行動應用，如Youtube與Facebook等社群媒體應用，讓訊息傳遞更友善、迅速與普及。民眾可以透過智慧型手機、網路，觀賞精采豐富的影音內容，內容包括人文風土、健康照護、節慶活動及縣府的最新服務等，民眾可以隨時隨地透過這個平台，盡情感受幸福宜蘭的多元面貌及魅力風采。另外，這個平台還同時提供「數位出版品」專區，收納了縣政府各項服務訊息的數位出版本，提供民眾免費閱讀。</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -703,7 +689,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="關於我" id="dml-to-CCl">
-                        <barButtonItem key="rightBarButtonItem" title="1020218" id="gkY-5w-mfB"/>
+                        <barButtonItem key="rightBarButtonItem" title="1020913" id="gkY-5w-mfB"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9D-GH-ae7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1146,7 +1132,7 @@
             <objects>
                 <tableViewController id="HiU-o5-qQk" customClass="RelevantViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ov7-z3-Oyo">
-                        <rect key="frame" x="0.0" y="20" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1673,7 +1659,7 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
-        <class className="ProductTypeViewController" superclassName="BasicTableViewController">
+        <class className="ProductTypeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductTypeViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnSearchclick:"/>
@@ -1701,9 +1687,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zrg-EW-dts"/>
-        <segue reference="fMN-CU-2aD"/>
         <segue reference="2sF-Ka-rgI"/>
-        <segue reference="2dF-tQ-A9j"/>
+        <segue reference="fMN-CU-2aD"/>
+        <segue reference="Qnc-PF-1tM"/>
+        <segue reference="QHk-Jo-WvB"/>
     </inferredMetricsTieBreakers>
 </document>

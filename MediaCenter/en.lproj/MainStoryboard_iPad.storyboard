@@ -8,26 +8,6 @@
         <scene sceneID="rjH-WK-gRM">
             <objects>
                 <tableViewController id="0Gw-iB-Bdi" customClass="ProductTypeViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oEW-zq-Maj">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wSs-Za-Kwe">
-                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="748" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="0Gw-iB-Bdi" id="Oxc-DM-Uzf"/>
-                            <outlet property="delegate" destination="0Gw-iB-Bdi" id="erm-m4-dck"/>
-                        </connections>
-                    </tableView>
                     <navigationItem key="navigationItem" title="數位出版品" id="OGh-pB-oAt">
                         <barButtonItem key="leftBarButtonItem" title="返回" id="Yl9-GE-MfW">
                             <connections>
@@ -37,10 +17,16 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
+                        <outlet property="view" destination="oOl-gy-LA2" id="sbd-Cb-YEe"/>
                         <segue destination="BO4-tO-gdh" kind="push" identifier="produceToDetail" id="ckC-P6-3zq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jR-Zw-pVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="oOl-gy-LA2">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="3716" y="-1899"/>
         </scene>
@@ -49,7 +35,7 @@
             <objects>
                 <tableViewController id="s5L-EG-zkP" customClass="PushViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a4G-hW-HWp">
-                        <rect key="frame" x="0.0" y="20" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -101,7 +87,7 @@
             <objects>
                 <viewController storyboardIdentifier="PushDetailViewController" id="1Fj-VM-L0s" customClass="PushDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ds2-3A-jU1">
-                        <rect key="frame" x="0.0" y="20" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -262,7 +248,7 @@
             <objects>
                 <tableViewController id="BO4-tO-gdh" customClass="CommonMetaDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ym8-td-qOn">
-                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -549,7 +535,7 @@
             <objects>
                 <viewController title="最新消息" id="1SG-UD-2RK" customClass="NewsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dd9-Z0-gkF">
-                        <rect key="frame" x="0.0" y="20" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -574,7 +560,7 @@
             <objects>
                 <viewController storyboardIdentifier="NewsDetailViewController" id="oM9-YY-MBD" customClass="NewsDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7hN-sm-TI8">
-                        <rect key="frame" x="0.0" y="20" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-bC-WAP">
@@ -1002,7 +988,7 @@
             <objects>
                 <tableViewController id="gew-qh-9Oz" customClass="RelevantViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xBp-x3-W0t">
-                        <rect key="frame" x="0.0" y="20" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1548,7 +1534,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="關於我" id="Ryu-ds-CRX">
-                        <barButtonItem key="rightBarButtonItem" title="1020218" id="fSS-XP-TVy"/>
+                        <barButtonItem key="rightBarButtonItem" title="1020913" id="fSS-XP-TVy"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                 </tableViewController>
@@ -1672,7 +1658,7 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
-        <class className="ProductTypeViewController" superclassName="BasicTableViewController">
+        <class className="ProductTypeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductTypeViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnSearchclick:"/>
@@ -1700,9 +1686,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yLY-HV-EiV"/>
+        <segue reference="wRF-ai-jbO"/>
+        <segue reference="ckC-P6-3zq"/>
         <segue reference="IH8-FM-23e"/>
-        <segue reference="ZNw-8y-rh1"/>
-        <segue reference="Mkn-6H-k2N"/>
+        <segue reference="yLY-HV-EiV"/>
     </inferredMetricsTieBreakers>
 </document>

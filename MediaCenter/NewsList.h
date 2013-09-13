@@ -13,6 +13,7 @@
  @private
     PullingRefreshTableView *_tableView;
     NSInteger govCurPage;
+     NSInteger govPageSize;
     NSInteger govMaxPage;
     ServiceHelper *_helper;
     BOOL   _isFirst;

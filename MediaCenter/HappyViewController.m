@@ -13,6 +13,7 @@
 #import "AlterMessage.h"
 #import "CommonCell.h"
 #import "SearchMetaData.h"
+#import "WebVideoViewController.h"
 @interface HappyViewController ()
 
 @end
@@ -176,6 +177,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row!=[self.listData count]) {
         selectRow=indexPath.row;
+        
+        //WebVideoViewController *webVideo=[[WebVideoViewController alloc] init];
+        //[self.navigationController pushViewController:webVideo animated:YES];
+        //[webVideo release];
+        
         [self performSegueWithIdentifier:@"goToHappyDetail" sender:self];
     }else{
         if (curPage!=maxPage) {

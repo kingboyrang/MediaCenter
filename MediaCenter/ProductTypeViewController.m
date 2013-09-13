@@ -12,20 +12,14 @@
 #import "CommonCell.h"
 #import "AlterMessage.h"
 #import "SearchMetaData.h"
+#import "NetWorkConnection.h"
 @interface ProductTypeViewController ()
-
+-(void)updateSourceData:(NSString*)xml;
 @end
 
 @implementation ProductTypeViewController
 @synthesize listData,keyWord;
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize refreshing;
 
 - (void)viewDidLoad
 {
@@ -36,28 +30,36 @@
     UIBarButtonItem *rightBtn=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(btnSearchclick:)];
     self.navigationItem.rightBarButtonItem=rightBtn;
     [rightBtn release];
+    
+    
+    _tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-44*2) pullingDelegate:self];
+    _tableView.backgroundColor=[UIColor clearColor];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [_tableView setAutoresizesSubviews:YES];
+    [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [self.view addSubview:_tableView];
+    
    
     self.listData=[NSMutableArray array];
     
     helper=[[ServiceHelper alloc] initWithDelegate:self];
     
+   
+    
+    
     isFirstLoad=YES;
-    curPage=1;
+    curPage=0;
     maxPage=1;
     pageSize=10;
     if ([AppHelper isIPad]) {
         pageSize=20;
     }
     self.keyWord=[[NSString alloc] initWithString:@""];
-    if (!self.hasNetwork){
-        [self showNoNetworkNotice:nil];
-    }else{
-       [self startSearch];
-    }
-    
+     [_tableView launchRefreshing];//默认加载10笔数据
 }
 -(void)startSearch{
-    [self showLoadingAnimated:YES];
+    
     NSString *soapMsg=[MediaSoapMessage EbookMovieSoap:self.keyWord withCurPage:curPage withCurSize:pageSize];
     [helper AsyServiceMethod:@"CategorySearchMetaData" SoapMessage:soapMsg];
 }
@@ -85,40 +87,14 @@
 #pragma mark -
 #pragma mark ServiceHelper delegate methods
 -(void)finishSuccessRequest:(NSString*)xml responseData:(NSData*)requestData{
-    NSString *page;
-    NSMutableArray *arr=[SearchMetaData XmlToArray:xml withMaxPage:&page];
-    maxPage=[page intValue];
-    if (isFirstLoad) {//表示第一次加载
-        isFirstLoad=NO;
-        self.listData=arr;
-        [self.tableView reloadData];
-    }else{
-        NSMutableArray *insertIndexPaths = [NSMutableArray arrayWithCapacity:pageSize];
-        for (int i=0; i<[arr count]; i++){
-            [self.listData addObject:[arr objectAtIndex:i]];
-            NSIndexPath *newPath=[NSIndexPath indexPathForRow:(curPage-1)*pageSize+i inSection:0];
-            [insertIndexPaths addObject:newPath];
-        }
-        //重新呼叫UITableView的方法, 來生成行.
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView endUpdates];
-        
-    }
-    if ([arr count]>0) {
-        [self hideLoadingViewAnimated:YES];
-    }else{
-      [self hideLoadingViewAnimated:YES completed:^(AnimateLoadView *hideView) {
-        [hideView.activityIndicatorView stopAnimating];
-        [self showErrorNoticeWithTitle:@"請求完成" message:@"沒有返回數據!" dismiss:nil];
-      }];
-    }
+    [_tableView tableViewDidFinishedLoading];
+    _tableView.reachedTheEnd  = NO;
+    [self performSelectorOnMainThread:@selector(updateSourceData:) withObject:xml waitUntilDone:NO];
 }
 -(void)finishFailRequest:(NSError*)error{
-    [self hideLoadingViewAnimated:YES completed:^(AnimateLoadView *hideView) {
-        [hideView.activityIndicatorView stopAnimating];
-        [self showErrorNoticeWithTitle:@"沒有返回數據" message:@"加載失敗!" dismiss:nil];
-    }];
+    [_tableView tableViewDidFinishedLoadingWithMessage:@"沒有返回數據!"];
+    _tableView.reachedTheEnd  = NO;
+    curPage--;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -136,11 +112,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if ([self.listData count]==0) {
-        return 0;
-    }
-    return [self.listData count]+1;
+
+    return [self.listData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,99 +122,29 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
         cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
     for (UIView *v in cell.contentView.subviews) {
         [v removeFromSuperview];
     }
     cell.textLabel.text=@"";
-    if (indexPath.row!=[self.listData count]) {
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         NSDictionary *dic=[self.listData objectAtIndex:indexPath.row];
-        // NSDictionary *newDic=[NSDictionary dictionaryWithObjectsAndKeys:[dic objectForKey:@"Title"],@"C_NAME",[dic objectForKey:@"UnitName"],@"DEPT_NAME",[dic objectForKey:@"Created"],@"REG_DATE",[dic objectForKey:@"TypeName"],@"ClassCodeName", nil];
-        
         CommonCell *commonCell=[[CommonCell alloc] initWithData:dic withFrame:CGRectMake(0, 0, self.view.frame.size.width-25, 60)];
         [cell.contentView addSubview:commonCell];
         [commonCell release];
-
-    }else{
-        cell.accessoryType=UITableViewCellAccessoryNone;
-        if (curPage!=maxPage) {
-            cell.textLabel.font=[UIFont boldSystemFontOfSize:20];
-            cell.textLabel.text=@"loading more...";
-        }else{
-            cell.textLabel.text=@"";
-        }
-
-    }
-      // Configure the cell...
-    
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row==[self.listData count]) {
-        if (curPage==maxPage) {
-            return 0;
-        }
-    }
-    return 60;
+       return 60;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row!=[self.listData count]) {
+   
         selectRow=indexPath.row;
         [self performSegueWithIdentifier:@"produceToDetail" sender:self];
-    }else{
-        if (curPage!=maxPage){
-            curPage++;
-            if (curPage>=maxPage) {
-                curPage=maxPage;
-            }
-            [self startSearch];
-        }
-    }
-    
+       
 }
 //点击查询按钮时，出现查询对话框
 - (IBAction)btnSearchclick:(id)sender{
@@ -259,8 +162,8 @@
     
 }
 -(void)btnDelSearchClick:(id)sender{
-    self.tableView.allowsSelection=YES;
-    self.tableView.scrollEnabled=YES;
+    _tableView.allowsSelection=YES;
+    _tableView.scrollEnabled=YES;
     
     UIBarButtonItem *searchButton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(buttonSearchMovie:)];
     self.navigationItem.rightBarButtonItem=searchButton;
@@ -313,29 +216,99 @@
 #pragma mark UISearchBar delegate Methods
 //添加搜索框事件：
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    self.tableView.allowsSelection=NO;
-    self.tableView.scrollEnabled=NO;
+    _tableView.allowsSelection=NO;
+    _tableView.scrollEnabled=NO;
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self.listData removeAllObjects];
     self.KeyWord=searchBar.text;//获取查询条件
     [searchBar resignFirstResponder];
     
-    self.tableView.allowsSelection=YES;
-    self.tableView.scrollEnabled=YES;
+    _tableView.allowsSelection=YES;
+    _tableView.scrollEnabled=YES;
     
     isFirstLoad=YES;
-    curPage=1;
+    curPage=0;
     maxPage=1;
     
-    if (!self.hasNetwork){
-        [self showNoNetworkNotice:nil];
+    [_tableView launchRefreshing];//默认加载10笔数据
+}
+-(void)updateSourceData:(NSString*)xml{
+    NSString *page;
+    NSMutableArray *arr=[SearchMetaData XmlToArray:xml withMaxPage:&page];
+    if (arr==nil||[arr count]==0) {
+        [_tableView tableViewDidFinishedLoadingWithMessage:@"沒有返回數據!"];
+        _tableView.reachedTheEnd  = NO;
+        curPage--;
         return;
     }
+    maxPage=[page intValue];
+    if (isFirstLoad) {//表示第一次加载
+        isFirstLoad=NO;
+        self.listData=arr;
+        [_tableView reloadData];
+    }else{
+        NSMutableArray *insertIndexPaths = [NSMutableArray arrayWithCapacity:pageSize];
+        for (int i=0; i<[arr count]; i++){
+            [self.listData addObject:[arr objectAtIndex:i]];
+            NSIndexPath *newPath=[NSIndexPath indexPathForRow:(curPage-1)*pageSize+i inSection:0];
+            [insertIndexPaths addObject:newPath];
+        }
+        //重新呼叫UITableView的方法, 來生成行.
+        [_tableView beginUpdates];
+        [_tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView endUpdates];
+        
+    }
+}
+-(void)loadSourceData{
     //开始查询
     [self startSearch];
 }
+-(void)loadData{
+    if (self.refreshing) {
+        self.refreshing=NO;
+    }
+    if (![[NetWorkConnection sharedInstance] hasConnection]) {
+        _tableView.reachedTheEnd  = NO;
+        [_tableView tableViewDidFinishedLoadingWithMessage:@"請檢查網絡連接.."];
+        return;
+    }
+    if (curPage!=maxPage) {
+        curPage++;
+        if (curPage>=maxPage) {
+            curPage=maxPage;
+        }
+        [self loadSourceData];//加载数据
+    }else{
+        [_tableView tableViewDidFinishedLoadingWithMessage:@"沒有了哦.."];
+        _tableView.reachedTheEnd  = YES;
+        
+    }
+}
+#pragma mark - PullingRefreshTableViewDelegate
+//下拉加载
+- (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
+    self.refreshing = YES;
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+}
+
+//上拉加载
+- (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.f];
+}
+
+#pragma mark - Scroll
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_tableView tableViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_tableView tableViewDidEndDragging:scrollView];
+}
+
 -(void)dealloc{
+    [_tableView release];
     [super dealloc];
     [helper release];
     [listData release];

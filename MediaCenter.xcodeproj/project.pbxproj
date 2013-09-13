@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01338D6117E2A50F008B03F8 /* WebVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01338D6017E2A50F008B03F8 /* WebVideoViewController.m */; };
 		013FB7D317E1F41A0077770E /* youtube.html in Resources */ = {isa = PBXBuildFile; fileRef = 013FB7D217E1F41A0077770E /* youtube.html */; };
 		015486EA1651EC6D0001C3F9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 015486E91651EC6D0001C3F9 /* Entitlements.plist */; };
 		018CA6D816633C820086397A /* OrganViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018CA6D716633C820086397A /* OrganViewController.m */; };
@@ -172,6 +173,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01338D5F17E2A50F008B03F8 /* WebVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVideoViewController.h; sourceTree = "<group>"; };
+		01338D6017E2A50F008B03F8 /* WebVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVideoViewController.m; sourceTree = "<group>"; };
 		013FB7D217E1F41A0077770E /* youtube.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = youtube.html; sourceTree = "<group>"; };
 		015486E91651EC6D0001C3F9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		018CA6D616633C820086397A /* OrganViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganViewController.h; sourceTree = "<group>"; };
@@ -1031,6 +1034,8 @@
 				01CCBBE61680375100E25E67 /* CommonMetaDetailViewController.m */,
 				01BFFF0D169517AD000ECEBB /* PreviewImageViewController.h */,
 				01BFFF0E169517AD000ECEBB /* PreviewImageViewController.m */,
+				01338D5F17E2A50F008B03F8 /* WebVideoViewController.h */,
+				01338D6017E2A50F008B03F8 /* WebVideoViewController.m */,
 			);
 			name = Movie;
 			sourceTree = "<group>";
@@ -1247,6 +1252,7 @@
 				01B89E4917E18EC6006C787D /* LightMenuBar.m in Sources */,
 				01B89E4A17E18EC6006C787D /* LightMenuBarView.m in Sources */,
 				01B89E5517E19699006C787D /* UIColor+TPCategory.m in Sources */,
+				01338D6117E2A50F008B03F8 /* WebVideoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

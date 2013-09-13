@@ -21,7 +21,12 @@
     if (self) {
         // Initialization code
         [self loadConfigure:frame];
-       
+        if (!_webView){
+            _webView=[[UIWebView alloc] initWithFrame:self.scrollView.bounds];
+            _webView.hidden=YES;
+            [self.scrollView addSubview:_webView];
+            [self.scrollView sendSubviewToBack:_webView];
+        }
         
     }
     return self;
@@ -196,13 +201,7 @@
             //NSString *html=[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
             //html=[NSString stringWithFormat:html,@"100%",(int)self.scrollView.bounds.size.height,[dic objectForKey:@"value"]];
              //NSLog(@"%@\n",html);
-            CGRect frame=self.scrollView.bounds;
-            frame.origin.x=index*frame.size.width;
-            if (!_webView) {
-                _webView=[[UIWebView alloc] initWithFrame:frame];
-                //_webView.delegate=self;
-            }
-            
+                       
             
              MPMoviePlayerController *player = [moviePlayer moviePlayer];
             [UIView animateWithDuration:0.5f animations:^{
@@ -212,20 +211,26 @@
                     [self.scrollView sendSubviewToBack:player.view];
                     player.view.hidden=YES;
                     
-                    if (![self.scrollView.subviews containsObject:_webView]) {
-                        [self.scrollView addSubview:_webView];
+                    CGRect frame=self.scrollView.bounds;
+                    frame.origin.x=index*frame.size.width;
+                    _webView.frame=frame;
+                   
+                    if (_webView.hidden) {
+                        _webView.hidden=NO;
                     }
+                  
                     
                     
                     NSString *htmlString = @"<html><head>\
-                    <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = \"100%\"\"/></head>\
+                    <meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = \"100%%\"\"/></head>\
                     <body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-                    <iframe id=\"ytplayer\" type=\"text/html\" width=\"100%\" height=\"240\"\
+                    <iframe id=\"ytplayer\" type=\"text/html\" width=\"100%%\" height=\"%d\"\
                     src=\"http://www.youtube.com/embed/%@?autoplay=1\"\
                     frameborder=\"0\"/>\
                     </body></html>";
                     
-                    htmlString = [NSString stringWithFormat:htmlString, [dic objectForKey:@"value"], [dic objectForKey:@"value"]];
+                    htmlString = [NSString stringWithFormat:htmlString,(int)self.scrollView.bounds.size.height, [dic objectForKey:@"value"]];
+                    NSLog(@"%@",htmlString);
                     
                     [_webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://www.youtube.com"]];
 
@@ -244,10 +249,9 @@
             
         }else{
             if ([self.scrollView.subviews containsObject:_webView]) {
-                [_webView removeFromSuperview];
-                _webView.delegate=nil;
                 [_webView stopLoading];
-                [_webView release],_webView=nil;
+                _webView.hidden=YES;
+                [self.scrollView sendSubviewToBack:_webView];
             }
              MPMoviePlayerController *player = [moviePlayer moviePlayer];
             if (player.view.hidden) {

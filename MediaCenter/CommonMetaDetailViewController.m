@@ -184,14 +184,12 @@
                 [movieArr addObject:[SearchMetaData formatImageUrl:[dic objectForKey:@"DownLoadPath"]]];
             }
             index++;
-            
         }
         //NSLog(@"youtubeArr=%@\n",youtubeArr);
-        //MovieScroll *movieScroll=[[MovieScroll alloc] initWithData:movieArr frame:CGRectMake(0, 0, self.view.frame.size.width, h)];
+        //NSLog(@"movieArr=%@\n",movieArr);
        MovieScroll *movieScroll=[[MovieScroll alloc] initWithData:movieArr youtube:youtubeArr frame:CGRectMake(0, 0, self.view.frame.size.width, h)];
         movieScroll.tag=600;
         movieScroll.delegate=self;
-        //[self.view addSubview:movieScroll];
         [self.cellShowImg.contentView addSubview:movieScroll];
         [movieScroll release];
         
