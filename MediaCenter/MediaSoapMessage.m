@@ -153,5 +153,27 @@
     NSString *body=[NSString stringWithFormat:@"<guid>%@</guid>",guid];
     return [NSString stringWithFormat:soap,body];
 }
-
+//職缺資料列表
++(NSString*)GetRecruitersListSoapMesage:(int)curPage withCurSize:(int)pageSize{
+    NSString *soap=[SoapHelper MethodSoapMessage:@"GetRecruitersList"];
+    NSMutableString *msg=[NSMutableString stringWithFormat:@""];
+    [msg appendFormat:@"<curPage>%d</curPage>",curPage];
+    [msg appendFormat:@"<pageSize>%d</pageSize>",pageSize];
+    return [NSString stringWithFormat:soap,msg];
+}
+//職缺資料明細
++(NSString*)GetRecruitersDetailSoapMessage:(NSString*)guid{
+    NSString *soap=[SoapHelper MethodSoapMessage:@"GetRecruitersDetail"];
+    NSMutableString *msg=[NSMutableString stringWithFormat:@""];
+    [msg appendFormat:@"<PK>%@</PK>",guid];
+    return [NSString stringWithFormat:soap,msg];
+}
+//求才活動資料列表
++(NSString*)GetActivityListSoapMesage:(int)curPage withCurSize:(int)pageSize{
+    NSString *soap=[SoapHelper MethodSoapMessage:@"GetActivityList"];
+    NSMutableString *msg=[NSMutableString stringWithFormat:@""];
+    [msg appendFormat:@"<curPage>%d</curPage>",curPage];
+    [msg appendFormat:@"<pageSize>%d</pageSize>",pageSize];
+    return [NSString stringWithFormat:soap,msg];
+}
 @end

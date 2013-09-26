@@ -10,6 +10,7 @@
 		01338D6117E2A50F008B03F8 /* WebVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01338D6017E2A50F008B03F8 /* WebVideoViewController.m */; };
 		013FB7D317E1F41A0077770E /* youtube.html in Resources */ = {isa = PBXBuildFile; fileRef = 013FB7D217E1F41A0077770E /* youtube.html */; };
 		015486EA1651EC6D0001C3F9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 015486E91651EC6D0001C3F9 /* Entitlements.plist */; };
+		0187522D17F2DF0700E9E703 /* JobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187522C17F2DF0700E9E703 /* JobDetailViewController.m */; };
 		018CA6D816633C820086397A /* OrganViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018CA6D716633C820086397A /* OrganViewController.m */; };
 		018CA70116647A590086397A /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018CA70016647A590086397A /* PushViewController.m */; };
 		018CA70416647A8A0086397A /* PushDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018CA70316647A8A0086397A /* PushDetailViewController.m */; };
@@ -96,6 +97,9 @@
 		01B962981669AFAD00D90EBE /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B962951669AFAD00D90EBE /* twitter.png */; };
 		01B9629D1669C7DA00D90EBE /* NewMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B9629C1669C7DA00D90EBE /* NewMovieViewController.m */; };
 		01B962A81669D99800D90EBE /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B962A71669D99800D90EBE /* CommonCell.m */; };
+		01BAAB4C17F2BB1F0040BEAD /* JobAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAAB4B17F2BB1F0040BEAD /* JobAreaViewController.m */; };
+		01BAAB5017F2BB590040BEAD /* BenefitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAAB4F17F2BB590040BEAD /* BenefitViewController.m */; };
+		01BAAB5B17F2CA1B0040BEAD /* JobAreaList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAAB5A17F2CA1B0040BEAD /* JobAreaList.m */; };
 		01BC3E8F16562FA500C8D4DF /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3E8A16562FA500C8D4DF /* GDataXMLNode.m */; };
 		01BC3E9016562FA500C8D4DF /* SoapXmlParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3E8E16562FA500C8D4DF /* SoapXmlParseHelper.m */; };
 		01BC3E9216562FCE00C8D4DF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BC3E9116562FCE00C8D4DF /* libxml2.dylib */; };
@@ -161,6 +165,10 @@
 		01CCE133165CE36B0093ED92 /* NSString+StringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CCE132165CE36A0093ED92 /* NSString+StringExtension.m */; };
 		01CD60A916966167007E0C49 /* mainRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD60A816966167007E0C49 /* mainRootViewController.m */; };
 		01CD60AF1696ABF0007E0C49 /* UIImageView+DispatchLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD60AE1696ABF0007E0C49 /* UIImageView+DispatchLoad.m */; };
+		01D800D117F3E467001C66F6 /* TKLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D800C817F3E467001C66F6 /* TKLabelCell.m */; };
+		01D800D817F3E482001C66F6 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D800D717F3E482001C66F6 /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		01D800DC17F3FEAB001C66F6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D800DB17F3FEAB001C66F6 /* CoreText.framework */; };
+		01D800DD17F3FF72001C66F6 /* TKLabelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D800DA17F3E556001C66F6 /* TKLabelLabel.m */; };
 		01E018CF164A48F10031FE9D /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E018CE164A48F10031FE9D /* UIImage-Extensions.m */; };
 		269F2C8B165FAFBC004F4AB9 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8A165FAFBC004F4AB9 /* FileHelper.m */; };
 		269F2C8F165FB70F004F4AB9 /* MovieFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8E165FB70F004F4AB9 /* MovieFavoriteViewController.m */; };
@@ -177,6 +185,8 @@
 		01338D6017E2A50F008B03F8 /* WebVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVideoViewController.m; sourceTree = "<group>"; };
 		013FB7D217E1F41A0077770E /* youtube.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = youtube.html; sourceTree = "<group>"; };
 		015486E91651EC6D0001C3F9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		0187522B17F2DF0700E9E703 /* JobDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailViewController.h; sourceTree = "<group>"; };
+		0187522C17F2DF0700E9E703 /* JobDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailViewController.m; sourceTree = "<group>"; };
 		018CA6D616633C820086397A /* OrganViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganViewController.h; sourceTree = "<group>"; };
 		018CA6D716633C820086397A /* OrganViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganViewController.m; sourceTree = "<group>"; };
 		018CA6FF16647A590086397A /* PushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
@@ -309,6 +319,12 @@
 		01B9629C1669C7DA00D90EBE /* NewMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMovieViewController.m; sourceTree = "<group>"; };
 		01B962A61669D99800D90EBE /* CommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCell.h; sourceTree = "<group>"; };
 		01B962A71669D99800D90EBE /* CommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonCell.m; sourceTree = "<group>"; };
+		01BAAB4A17F2BB1F0040BEAD /* JobAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobAreaViewController.h; sourceTree = "<group>"; };
+		01BAAB4B17F2BB1F0040BEAD /* JobAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobAreaViewController.m; sourceTree = "<group>"; };
+		01BAAB4E17F2BB590040BEAD /* BenefitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BenefitViewController.h; sourceTree = "<group>"; };
+		01BAAB4F17F2BB590040BEAD /* BenefitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenefitViewController.m; sourceTree = "<group>"; };
+		01BAAB5917F2CA1B0040BEAD /* JobAreaList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobAreaList.h; sourceTree = "<group>"; };
+		01BAAB5A17F2CA1B0040BEAD /* JobAreaList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobAreaList.m; sourceTree = "<group>"; };
 		01BC3E8916562FA500C8D4DF /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		01BC3E8A16562FA500C8D4DF /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		01BC3E8B16562FA500C8D4DF /* GDataDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDefines.h; sourceTree = "<group>"; };
@@ -430,6 +446,13 @@
 		01CD60A816966167007E0C49 /* mainRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainRootViewController.m; sourceTree = "<group>"; };
 		01CD60AD1696ABF0007E0C49 /* UIImageView+DispatchLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+DispatchLoad.h"; sourceTree = "<group>"; };
 		01CD60AE1696ABF0007E0C49 /* UIImageView+DispatchLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+DispatchLoad.m"; sourceTree = "<group>"; };
+		01D800C717F3E467001C66F6 /* TKLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLabelCell.h; sourceTree = "<group>"; };
+		01D800C817F3E467001C66F6 /* TKLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLabelCell.m; sourceTree = "<group>"; };
+		01D800D617F3E482001C66F6 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		01D800D717F3E482001C66F6 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		01D800D917F3E556001C66F6 /* TKLabelLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKLabelLabel.h; sourceTree = "<group>"; };
+		01D800DA17F3E556001C66F6 /* TKLabelLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKLabelLabel.m; sourceTree = "<group>"; };
+		01D800DB17F3FEAB001C66F6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		01E018CD164A48F10031FE9D /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		01E018CE164A48F10031FE9D /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		269F2C89165FAFBC004F4AB9 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
@@ -454,6 +477,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D800DC17F3FEAB001C66F6 /* CoreText.framework in Frameworks */,
 				01C44A7016817C3000B23588 /* AVFoundation.framework in Frameworks */,
 				01B90DFB166C4D1B0007B22F /* QuickLook.framework in Frameworks */,
 				01BC3EBD1656322300C8D4DF /* libz.dylib in Frameworks */,
@@ -604,6 +628,7 @@
 		01B6E9D01648968700A43E74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01D800DB17F3FEAB001C66F6 /* CoreText.framework */,
 				01C44A6F16817C2F00B23588 /* AVFoundation.framework */,
 				01B90DFA166C4D1B0007B22F /* QuickLook.framework */,
 				01BC3EBC1656322300C8D4DF /* libz.dylib */,
@@ -729,6 +754,7 @@
 		01B89E1D17E15DA9006C787D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				01D800C617F3E451001C66F6 /* Label */,
 				01B89E4317E18EB9006C787D /* LightMenuBar */,
 				01B89E1E17E15DAE006C787D /* YGPSemgmented */,
 			);
@@ -964,6 +990,19 @@
 			name = FileDownload;
 			sourceTree = "<group>";
 		};
+		01D800C617F3E451001C66F6 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				01D800D617F3E482001C66F6 /* RTLabel.h */,
+				01D800D717F3E482001C66F6 /* RTLabel.m */,
+				01D800C717F3E467001C66F6 /* TKLabelCell.h */,
+				01D800C817F3E467001C66F6 /* TKLabelCell.m */,
+				01D800D917F3E556001C66F6 /* TKLabelLabel.h */,
+				01D800DA17F3E556001C66F6 /* TKLabelLabel.m */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
 		01E018CC164A48E60031FE9D /* CagtegoryClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,6 +1075,14 @@
 				01BFFF0E169517AD000ECEBB /* PreviewImageViewController.m */,
 				01338D5F17E2A50F008B03F8 /* WebVideoViewController.h */,
 				01338D6017E2A50F008B03F8 /* WebVideoViewController.m */,
+				01BAAB4A17F2BB1F0040BEAD /* JobAreaViewController.h */,
+				01BAAB4B17F2BB1F0040BEAD /* JobAreaViewController.m */,
+				01BAAB4E17F2BB590040BEAD /* BenefitViewController.h */,
+				01BAAB4F17F2BB590040BEAD /* BenefitViewController.m */,
+				01BAAB5917F2CA1B0040BEAD /* JobAreaList.h */,
+				01BAAB5A17F2CA1B0040BEAD /* JobAreaList.m */,
+				0187522B17F2DF0700E9E703 /* JobDetailViewController.h */,
+				0187522C17F2DF0700E9E703 /* JobDetailViewController.m */,
 			);
 			name = Movie;
 			sourceTree = "<group>";
@@ -1154,6 +1201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D800DD17F3FF72001C66F6 /* TKLabelLabel.m in Sources */,
 				01B6E9DE1648968700A43E74 /* main.m in Sources */,
 				01B6E9E21648968700A43E74 /* AppDelegate.m in Sources */,
 				01B6EA371648DBEE00A43E74 /* CustomNavigationBar.m in Sources */,
@@ -1161,6 +1209,7 @@
 				01E018CF164A48F10031FE9D /* UIImage-Extensions.m in Sources */,
 				26A92557164A9BDA00C71DD0 /* SkipStory.m in Sources */,
 				01B396E01650DE72005E1489 /* AppHelper.m in Sources */,
+				01D800D817F3E482001C66F6 /* RTLabel.m in Sources */,
 				26AE0D9C165124B60042D7BE /* CustomizeImageView.m in Sources */,
 				01BC3E8F16562FA500C8D4DF /* GDataXMLNode.m in Sources */,
 				01BC3E9016562FA500C8D4DF /* SoapXmlParseHelper.m in Sources */,
@@ -1241,6 +1290,7 @@
 				01B5A65317E018820076738C /* WBNoticeView.m in Sources */,
 				01B5A65417E018820076738C /* WBRedGradientView.m in Sources */,
 				01B5A65517E018820076738C /* WBStickyNoticeView.m in Sources */,
+				01D800D117F3E467001C66F6 /* TKLabelCell.m in Sources */,
 				01B5A65617E018820076738C /* WBSuccessNoticeView.m in Sources */,
 				01B5A65E17E0198A0076738C /* NetWorkConnection.m in Sources */,
 				01B5A66517E01C000076738C /* BasicTableViewController.m in Sources */,
@@ -1253,6 +1303,10 @@
 				01B89E4A17E18EC6006C787D /* LightMenuBarView.m in Sources */,
 				01B89E5517E19699006C787D /* UIColor+TPCategory.m in Sources */,
 				01338D6117E2A50F008B03F8 /* WebVideoViewController.m in Sources */,
+				01BAAB4C17F2BB1F0040BEAD /* JobAreaViewController.m in Sources */,
+				01BAAB5017F2BB590040BEAD /* BenefitViewController.m in Sources */,
+				01BAAB5B17F2CA1B0040BEAD /* JobAreaList.m in Sources */,
+				0187522D17F2DF0700E9E703 /* JobDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

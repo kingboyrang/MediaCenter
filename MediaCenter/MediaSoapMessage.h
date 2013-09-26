@@ -71,8 +71,12 @@
 +(NSString*)CategoryListSoap;
 
 
-
-
+//職缺資料列表
++(NSString*)GetRecruitersListSoapMesage:(int)curPage withCurSize:(int)pageSize;
+//職缺資料明細
++(NSString*)GetRecruitersDetailSoapMessage:(NSString*)guid;
+//求才活動資料列表
++(NSString*)GetActivityListSoapMesage:(int)curPage withCurSize:(int)pageSize;
 
 
 

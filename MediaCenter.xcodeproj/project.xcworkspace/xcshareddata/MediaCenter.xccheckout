@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FA346603-2BDB-4A38-9468-B0C7FE8C66AA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MediaCenter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFD10BB2-F26C-4153-B655-4FE6578F2F34</key>
+		<string>https://github.com/kingboyrang/MediaCenter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MediaCenter.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFD10BB2-F26C-4153-B655-4FE6578F2F34</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kingboyrang/MediaCenter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BFD10BB2-F26C-4153-B655-4FE6578F2F34</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFD10BB2-F26C-4153-B655-4FE6578F2F34</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MediaCenter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
