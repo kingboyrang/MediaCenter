@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BenefitViewController : UIViewController
-
+#import "ServiceHelper.h"
+#import "BasicViewController.h"
+#import "PullingRefreshTableView.h"
+@interface BenefitViewController : BasicViewController<PullingRefreshTableViewDelegate,ServiceHelperDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>{
+    int curPage;
+    int pageSize;
+    int maxPage;
+    BOOL isFirstLoad;//是否为第一次加载
+    
+    ServiceHelper *helper;
+    int selectRow;
+    
+    PullingRefreshTableView *_tableView;
+}
+@property (nonatomic) BOOL refreshing;
+@property(nonatomic,retain) NSMutableArray *listData;
 @end

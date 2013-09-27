@@ -69,6 +69,15 @@
  return [self CategorySearchMetaData:@"5" classCode:@"" KeyWord:keyword withCurPage:curPage withCurSize:pageSize];
 }
 
+/**福利专区***
+ KeyWord:关键字
+ withCurPage:当前页
+ withCurSize:每页显示数量
+ ***/
++(NSString*)BenfitMovieSoap:(NSString*)keyword withCurPage:(int)curPage withCurSize:(int)pageSize{
+ return [self CategorySearchMetaData:@"6" classCode:@"" KeyWord:keyword withCurPage:curPage withCurSize:pageSize];
+}
+
 /****
  **获取机关类别
  ***/

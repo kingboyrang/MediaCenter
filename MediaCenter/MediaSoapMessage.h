@@ -48,6 +48,13 @@
  ***/
 +(NSString*)DistrictMovieSoap:(NSString*)keyword withCurPage:(int)curPage withCurSize:(int)pageSize;
 
+/**福利专区***
+ KeyWord:关键字
+ withCurPage:当前页
+ withCurSize:每页显示数量
+ ***/
++(NSString*)BenfitMovieSoap:(NSString*)keyword withCurPage:(int)curPage withCurSize:(int)pageSize;
+
 /**数位出版品***
  KeyWord:关键字
  withCurPage:当前页
