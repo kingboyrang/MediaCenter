@@ -170,6 +170,8 @@
 		01D800DC17F3FEAB001C66F6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D800DB17F3FEAB001C66F6 /* CoreText.framework */; };
 		01D800DD17F3FF72001C66F6 /* TKLabelLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D800DA17F3E556001C66F6 /* TKLabelLabel.m */; };
 		01E018CF164A48F10031FE9D /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E018CE164A48F10031FE9D /* UIImage-Extensions.m */; };
+		01E5BD5B17F56E9D0020A83E /* benfit.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BD5917F56E9D0020A83E /* benfit.png */; };
+		01E5BD5C17F56E9D0020A83E /* job.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BD5A17F56E9D0020A83E /* job.png */; };
 		269F2C8B165FAFBC004F4AB9 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8A165FAFBC004F4AB9 /* FileHelper.m */; };
 		269F2C8F165FB70F004F4AB9 /* MovieFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8E165FB70F004F4AB9 /* MovieFavoriteViewController.m */; };
 		269F2C92165FC6B4004F4AB9 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C91165FC6B4004F4AB9 /* News.m */; };
@@ -455,6 +457,8 @@
 		01D800DB17F3FEAB001C66F6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		01E018CD164A48F10031FE9D /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		01E018CE164A48F10031FE9D /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
+		01E5BD5917F56E9D0020A83E /* benfit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = benfit.png; sourceTree = "<group>"; };
+		01E5BD5A17F56E9D0020A83E /* job.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = job.png; sourceTree = "<group>"; };
 		269F2C89165FAFBC004F4AB9 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		269F2C8A165FAFBC004F4AB9 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		269F2C8D165FB70F004F4AB9 /* MovieFavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieFavoriteViewController.h; sourceTree = "<group>"; };
@@ -680,6 +684,8 @@
 		01B6E9F71648976F00A43E74 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				01E5BD5917F56E9D0020A83E /* benfit.png */,
+				01E5BD5A17F56E9D0020A83E /* job.png */,
 				01B5A65717E0189F0076738C /* error.png */,
 				01B147A416D1F73E0023DE91 /* news.png */,
 				01B147A016D1F6FB0023DE91 /* publishing.png */,
@@ -1191,6 +1197,8 @@
 				01B89E1B17E1534D006C787D /* blueArrowDown@2x.png in Resources */,
 				01B89E2617E15DBF006C787D /* red_background.png in Resources */,
 				013FB7D317E1F41A0077770E /* youtube.html in Resources */,
+				01E5BD5B17F56E9D0020A83E /* benfit.png in Resources */,
+				01E5BD5C17F56E9D0020A83E /* job.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
