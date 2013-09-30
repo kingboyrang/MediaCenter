@@ -10,7 +10,7 @@
 #import "NewsList.h"
 #import "NewsDetailViewController.h"
 #import "UIColor+TPCategory.h"
-#define MenuSoureData [NSArray arrayWithObjects:@"最新活動", @"縣政新聞", @"最新影音", @"招標公告", @"懲材公告", @"報乎你知", nil]
+#define MenuSoureData [NSArray arrayWithObjects:@"最新活動", @"縣政新聞", @"最新影音", @"招標公告", @"懲才公告", @"報乎你知", nil]
 
 @interface NewsViewController ()<UIScrollViewDelegate>{
     UIScrollView *_scrollView;
