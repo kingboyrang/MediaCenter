@@ -196,8 +196,8 @@
 //推播处理
 -(void)pushHandler:(NSDictionary*)userInfo{
     if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=nil) {
-        NSString *post=[userInfo objectForKey:@"content"];
-        NSDictionary  *dic=[PushInfo PushCheckStringToDictionary:post];
+        NSString *post=[userInfo objectForKey:@"guid"];
+        NSDictionary  *dic=[NSDictionary dictionaryWithObjectsAndKeys:post,@"guid", nil];
         
         NSNotification *notification = [NSNotification notificationWithName:@"pushDetail" object:nil userInfo:dic];
         [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];

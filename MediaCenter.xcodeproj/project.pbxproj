@@ -106,7 +106,6 @@
 		01BAAB4C17F2BB1F0040BEAD /* JobAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAAB4B17F2BB1F0040BEAD /* JobAreaViewController.m */; };
 		01BAAB5017F2BB590040BEAD /* BenefitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAAB4F17F2BB590040BEAD /* BenefitViewController.m */; };
 		01BAAB5B17F2CA1B0040BEAD /* JobAreaList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAAB5A17F2CA1B0040BEAD /* JobAreaList.m */; };
-		01BC3E8F16562FA500C8D4DF /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3E8A16562FA500C8D4DF /* GDataXMLNode.m */; };
 		01BC3E9016562FA500C8D4DF /* SoapXmlParseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3E8E16562FA500C8D4DF /* SoapXmlParseHelper.m */; };
 		01BC3E9216562FCE00C8D4DF /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BC3E9116562FCE00C8D4DF /* libxml2.dylib */; };
 		01BC3E961656303A00C8D4DF /* SoapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3E951656303A00C8D4DF /* SoapHelper.m */; };
@@ -178,6 +177,7 @@
 		01E018CF164A48F10031FE9D /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E018CE164A48F10031FE9D /* UIImage-Extensions.m */; };
 		01E5BD5B17F56E9D0020A83E /* benfit.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BD5917F56E9D0020A83E /* benfit.png */; };
 		01E5BD5C17F56E9D0020A83E /* job.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BD5A17F56E9D0020A83E /* job.png */; };
+		01E7B5AE182256B00086580A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E7B5AD182256B00086580A /* GDataXMLNode.m */; };
 		269F2C8B165FAFBC004F4AB9 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8A165FAFBC004F4AB9 /* FileHelper.m */; };
 		269F2C8F165FB70F004F4AB9 /* MovieFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8E165FB70F004F4AB9 /* MovieFavoriteViewController.m */; };
 		269F2C92165FC6B4004F4AB9 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C91165FC6B4004F4AB9 /* News.m */; };
@@ -345,10 +345,6 @@
 		01BAAB4F17F2BB590040BEAD /* BenefitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BenefitViewController.m; sourceTree = "<group>"; };
 		01BAAB5917F2CA1B0040BEAD /* JobAreaList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobAreaList.h; sourceTree = "<group>"; };
 		01BAAB5A17F2CA1B0040BEAD /* JobAreaList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobAreaList.m; sourceTree = "<group>"; };
-		01BC3E8916562FA500C8D4DF /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
-		01BC3E8A16562FA500C8D4DF /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
-		01BC3E8B16562FA500C8D4DF /* GDataDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDefines.h; sourceTree = "<group>"; };
-		01BC3E8C16562FA500C8D4DF /* GDataTargetNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataTargetNamespace.h; sourceTree = "<group>"; };
 		01BC3E8D16562FA500C8D4DF /* SoapXmlParseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapXmlParseHelper.h; sourceTree = "<group>"; };
 		01BC3E8E16562FA500C8D4DF /* SoapXmlParseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapXmlParseHelper.m; sourceTree = "<group>"; };
 		01BC3E9116562FCE00C8D4DF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -477,6 +473,10 @@
 		01E018CE164A48F10031FE9D /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		01E5BD5917F56E9D0020A83E /* benfit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = benfit.png; sourceTree = "<group>"; };
 		01E5BD5A17F56E9D0020A83E /* job.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = job.png; sourceTree = "<group>"; };
+		01E7B5AA182256B00086580A /* GDataDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDefines.h; sourceTree = "<group>"; };
+		01E7B5AB182256B00086580A /* GDataTargetNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataTargetNamespace.h; sourceTree = "<group>"; };
+		01E7B5AC182256B00086580A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		01E7B5AD182256B00086580A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		269F2C89165FAFBC004F4AB9 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		269F2C8A165FAFBC004F4AB9 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		269F2C8D165FB70F004F4AB9 /* MovieFavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieFavoriteViewController.h; sourceTree = "<group>"; };
@@ -833,14 +833,14 @@
 		01BC3E8416562F5300C8D4DF /* XmlParse */ = {
 			isa = PBXGroup;
 			children = (
+				01E7B5AA182256B00086580A /* GDataDefines.h */,
+				01E7B5AB182256B00086580A /* GDataTargetNamespace.h */,
+				01E7B5AC182256B00086580A /* GDataXMLNode.h */,
+				01E7B5AD182256B00086580A /* GDataXMLNode.m */,
 				014DC2F718223ED90050DFB8 /* XmlNode.h */,
 				014DC2F818223ED90050DFB8 /* XmlNode.m */,
 				014DC2F918223ED90050DFB8 /* XmlParseHelper.h */,
 				014DC2FA18223ED90050DFB8 /* XmlParseHelper.m */,
-				01BC3E8916562FA500C8D4DF /* GDataXMLNode.h */,
-				01BC3E8A16562FA500C8D4DF /* GDataXMLNode.m */,
-				01BC3E8B16562FA500C8D4DF /* GDataDefines.h */,
-				01BC3E8C16562FA500C8D4DF /* GDataTargetNamespace.h */,
 				01BC3E8D16562FA500C8D4DF /* SoapXmlParseHelper.h */,
 				01BC3E8E16562FA500C8D4DF /* SoapXmlParseHelper.m */,
 			);
@@ -1266,7 +1266,6 @@
 				01B396E01650DE72005E1489 /* AppHelper.m in Sources */,
 				01D800D817F3E482001C66F6 /* RTLabel.m in Sources */,
 				26AE0D9C165124B60042D7BE /* CustomizeImageView.m in Sources */,
-				01BC3E8F16562FA500C8D4DF /* GDataXMLNode.m in Sources */,
 				01BC3E9016562FA500C8D4DF /* SoapXmlParseHelper.m in Sources */,
 				01BC3E961656303A00C8D4DF /* SoapHelper.m in Sources */,
 				01BC3EAA1656312C00C8D4DF /* ASIDataDecompressor.m in Sources */,
@@ -1367,6 +1366,7 @@
 				01BAAB5017F2BB590040BEAD /* BenefitViewController.m in Sources */,
 				01BAAB5B17F2CA1B0040BEAD /* JobAreaList.m in Sources */,
 				0187522D17F2DF0700E9E703 /* JobDetailViewController.m in Sources */,
+				01E7B5AE182256B00086580A /* GDataXMLNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

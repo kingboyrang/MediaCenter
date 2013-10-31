@@ -8,6 +8,7 @@
 
 #import "mainRootViewController.h"
 #import "PushDetailViewController.h"
+#import "PushResult.h"
 @interface mainRootViewController ()
 
 @end
@@ -37,12 +38,10 @@
     UINavigationController *nav=(UINavigationController*)[arr objectAtIndex:selectIndex];
     if (nav) {
         UIStoryboard *storyboard=nav.storyboard;
-        if ([dic objectForKey:@"Type"]!=nil&&[[dic objectForKey:@"Type"] isEqualToString:@"9"]) {
-            PushDetailViewController *pushDetail=[storyboard instantiateViewControllerWithIdentifier:@"PushDetailViewController"];
-            pushDetail.GUID=[dic objectForKey:@"GUID"];
-            [nav pushViewController:pushDetail animated:NO];
-            
-        }
+        PushResult *entity=[PushResult PushResultWithGuid:[dic objectForKey:@"guid"]];
+        PushDetailViewController *pushDetail=[storyboard instantiateViewControllerWithIdentifier:@"PushDetailViewController"];
+        pushDetail.Entity=entity;
+        [nav pushViewController:pushDetail animated:NO];
         
     }
 }
