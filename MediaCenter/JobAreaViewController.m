@@ -113,8 +113,13 @@
     [UIView beginAnimations:nil context:nil];//动画开始
     [UIView setAnimationDuration:0.3];
     
-    self.slidLabel.frame = CGRectMake(0, 36, 160, 4);
-    [nibScrollView setContentOffset:CGPointMake(320*0, 0)];//页面滑动
+    CGFloat w=160;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        w=384;
+    }
+    
+    self.slidLabel.frame = CGRectMake(0, 36, w, 4);//384
+    [nibScrollView setContentOffset:CGPointMake(self.view.bounds.size.width*0, 0)];//页面滑动
     
     [UIView commitAnimations];
     [couponTableView loadingData];
@@ -128,8 +133,14 @@
     [UIView beginAnimations:nil context:nil];//动画开始
     [UIView setAnimationDuration:0.3];
     
-    self.slidLabel.frame = CGRectMake(159, 36, 161, 4);
-    [nibScrollView setContentOffset:CGPointMake(320*1, 0)];
+    CGFloat w=161,leftX=159;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        w=385;
+        leftX=384;
+    }
+    
+    self.slidLabel.frame = CGRectMake(leftX, 36, w, 4);
+    [nibScrollView setContentOffset:CGPointMake(self.view.bounds.size.width*1, 0)];
     
     [UIView commitAnimations];
     [groupbuyTableView loadingData];

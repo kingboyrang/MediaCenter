@@ -143,7 +143,7 @@
 }
 
 +(NSString*)GCMRegisterSoap:(NSString*)token  AppCode:(NSString*)code{
-    NSString *soap=[SoapHelper NameSpaceSoapMessage:PushWebServiceNameSpace MethodName:@"GCMRegister"];
+    NSString *soap=[SoapHelper NameSpaceSoapMessage:PushWebServiceNameSpace MethodName:@"Register"];
     NSString *body=[NSString stringWithFormat:@"<token>%@</token><appName>ios.app.elandmc.mdc</appName><appCode>%@</appCode>",token,code];
     /***
      <token>string</token>

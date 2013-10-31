@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceHelper.h"
+#import "PushResult.h"
 @interface PushDetailViewController : UIViewController<ServiceHelperDelegate>{
     ServiceHelper *helper;
 }
-@property(nonatomic,retain) NSDictionary *ItemData;
-@property(nonatomic,retain) NSString *GUID;
--(void)reLoadController:(NSString*)title withMessage:(NSString*)msg;
+-(void)loadPushDetail:(NSString*)guid;
+@property(nonatomic,strong) PushResult *Entity;
 @end

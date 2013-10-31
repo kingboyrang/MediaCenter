@@ -10,8 +10,13 @@
 #import "FileHelper.h"
 #import "AlterMessage.h"
 #import "PushInfo.h"
+#import "CacheHelper.h"
+#import "SoapHelper.h"
+#import "XmlParseHelper.h"
+#import "PushDetail.h"
 @interface PushViewController ()
-
+-(void)loadAndUpdatePush;
+-(void)reloadPushInfo;
 @end
 
 @implementation PushViewController
@@ -26,15 +31,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSArray *arr=[AppHelper fileNameToPush];
-    //排序
-    NSSortDescriptor *_sorter  = [[NSSortDescriptor alloc] initWithKey:@"Created" ascending:NO];
-    NSArray *sortArr=[arr sortedArrayUsingDescriptors:[NSArray arrayWithObjects:_sorter, nil]];
-    self.listData=[NSMutableArray array];
-    [self.listData addObjectsFromArray:sortArr];
-    [_sorter release];
-
-    [self.tableView reloadData];
+    [self reloadPushInfo];
+    [self loadAndUpdatePush];
 }
 - (void)viewDidLoad
 {
@@ -45,6 +43,43 @@
     UIBarButtonItem *rightButton=[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonEditClick:)];
     self.navigationItem.rightBarButtonItem=rightButton;
     [rightButton release];
+    _helper=[[ServiceHelper alloc] initWithDelegate:self];
+}
+-(void)reloadPushInfo{
+    NSArray *arr=[CacheHelper readCacheCasePush];
+    if (arr&&[arr count]>0) {
+        //排序
+        NSSortDescriptor *_sorter  = [[NSSortDescriptor alloc] initWithKey:@"SendTime" ascending:NO];
+        NSArray *sortArr=[arr sortedArrayUsingDescriptors:[NSArray arrayWithObjects:_sorter, nil]];
+        self.listData=[NSMutableArray arrayWithArray:sortArr];
+        [_sorter release];
+        [self.tableView reloadData];
+    }
+}
+-(void)loadAndUpdatePush{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *token=[userDefaults objectForKey:@"Flag"];
+    //NSString *token=@"6997eda072e4e60784a108bb9a98a777f737403caaaa2ed22f69580d14a411f5";
+    if ([token length]==0)return;
+    
+    NSString *soap=[SoapHelper NameSpaceSoapMessage:PushWebServiceNameSpace MethodName:@"GetMessages"];
+    NSString *msg=[NSString stringWithFormat:@"<token>%@</token>",token];
+    NSString *body=[NSString stringWithFormat:soap,msg];
+    [_helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"GetMessage" SoapMessage:body];
+}
+-(void)finishSuccessRequest:(NSString*)responseText responseData:(NSData*)requestData{
+    if ([responseText length]>0) {
+        NSString *xml=[responseText stringByReplacingOccurrencesOfString:@"xmlns=\"Push[]\"" withString:@""];
+        XmlParseHelper *result=[[[XmlParseHelper alloc] initWithData:xml] autorelease];
+        NSArray *arr=[result selectNodes:@"//Push" className:@"PushResult"];
+        if (arr&&[arr count]>0) {
+            [CacheHelper cacheCasePushArray:arr];
+            [self reloadPushInfo];
+            
+        }
+    }
+}
+-(void)finishFailRequest:(NSError*)error{
 }
 //编辑
 -(IBAction)buttonEditClick:(id)sender{
@@ -92,10 +127,16 @@
     static NSString *CellIdentifier = @"CellPushIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        PushDetail *detail=[[PushDetail alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 53)];
+        detail.tag=100;
+        [cell.contentView addSubview:detail];
+        [detail release];
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text=[[self.listData objectAtIndex:indexPath.row] objectForKey:@"Title"];
-    cell.detailTextLabel.text=[PushInfo formatCreateTime:[[self.listData objectAtIndex:indexPath.row] objectForKey:@"Created"]];//Created
+    PushResult *entity=[self.listData objectAtIndex:indexPath.row];
+    PushDetail *pushDetail=(PushDetail*)[cell viewWithTag:100];
+    [pushDetail setDataSource:entity];
     // Configure the cell...
     
     return cell;
@@ -105,10 +146,13 @@
 {
     NSInteger deleteRow=indexPath.row;
     [AlterMessage initWithTip:@"確定是否刪除?" confirmMessage:@"確定" cancelMessage:@"取消" confirmAction:^(){
+        PushResult *entity=[[self.listData objectAtIndex:deleteRow] retain];
+        [CacheHelper cacheDeletePushWithGuid:entity.GUID];
+        [entity release];
         //删除绑定数据
         [self.listData removeObjectAtIndex:deleteRow];
         //重新写入文件中
-        [FileHelper ContentToFile:self.listData withFileName:@"Push.plist"];
+        [CacheHelper cacheCasePushFromArray:self.listData];
         //行的删除
         NSMutableArray *indexPaths = [NSMutableArray array];
         [indexPaths addObject:[NSIndexPath indexPathForRow:deleteRow inSection:0]];
@@ -162,7 +206,7 @@
 
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return 53;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -172,5 +216,6 @@
 -(void)dealloc{
     [super dealloc];
     [listData release];
+    [_helper release],_helper=nil;
 }
 @end

@@ -10,12 +10,27 @@
 #import "MediaSoapMessage.h"
 #import "PushInfo.h"
 #import "AlterMessage.h"
-@interface PushDetailViewController ()
-
+#import "UIColor+TPCategory.h"
+#import "NSString+StringExtension.h"
+#import "WBErrorNoticeView.h"
+#import "SoapHelper.h"
+#import "XmlParseHelper.h"
+#import "CacheHelper.h"
+@interface PushDetailViewController (){
+    UILabel *_labTitle;
+    UITextView *_textView;
+}
+-(void)showErrorView;
+-(void)updateUIShow;
 @end
 
 @implementation PushDetailViewController
-@synthesize ItemData,GUID;
+-(void)dealloc{
+    [super dealloc];
+    [_labTitle release],_labTitle=nil;
+    [_textView release],_textView=nil;
+    [helper release];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,21 +38,6 @@
         // Custom initialization
     }
     return self;
-}
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    if (self.GUID!=nil) {
-        self.ItemData=[NSDictionary dictionary];
-        NSString *soapMsg=[MediaSoapMessage PushInfoSoap:self.GUID];
-        [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"GetPushInfo" SoapMessage:soapMsg];
-    }else{
-        [self reLoadController:[self.ItemData objectForKey:@"Title"] withMessage:[self.ItemData objectForKey:@"Content"]];
-        self.GUID=@"";
-        
-    }
-
-    
 }
 - (void)viewDidLoad
 {
@@ -53,65 +53,82 @@
     
     helper=[[ServiceHelper alloc] initWithDelegate:self];
     
+    _labTitle=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+	_labTitle.backgroundColor=[UIColor colorFromHexRGB:@"dfdfdf"];
+    _labTitle.font=[UIFont boldSystemFontOfSize:16];
+    _labTitle.textColor=[UIColor colorFromHexRGB:@"3DB5C0"];
+    [self.view addSubview:_labTitle];
     
+    _textView=[[UITextView alloc] initWithFrame:CGRectMake(0, 40, self.view.bounds.size.width, self.view.bounds.size.height-40)];
+    _textView.editable=NO;
+    _textView.backgroundColor=[UIColor colorFromHexRGB:@"f4f4f4"];
+    _textView.textColor=[UIColor blackColor];
+    _textView.font=[UIFont boldSystemFontOfSize:16];
+    [self.view addSubview:_textView];
+    
+    if (self.Entity) {
+        if (![self.Entity.Subject isEqual:[NSNull null]]&&[self.Entity.Subject length]>0) {
+            [self updateUIShow];
+        }else{
+            [self loadPushDetail:self.Entity.GUID];
+        }
+    }
+
 	// Do any additional setup after loading the view.
 }
+-(void)updateUIShow{
+    CGSize size=[self.Entity.Subject CalculateStringSize:[UIFont boldSystemFontOfSize:16] with:self.view.bounds.size.width];
+    CGRect frame=_labTitle.frame;
+    frame.size.height=size.height;
+    if (size.height<40) {
+        frame.size.height=40;
+    }
+    _labTitle.frame=frame;
+    _labTitle.text=self.Entity.Subject;
+    
+    frame=_textView.frame;
+    frame.origin.y=_labTitle.frame.size.height;
+    frame.size.height=self.view.bounds.size.height-_labTitle.frame.size.height;
+    _textView.frame=frame;
+    _textView.text=self.Entity.Body;
+}
+-(void)showErrorView{
+    WBErrorNoticeView *errorView=[WBErrorNoticeView errorNoticeInView:self.view title:@"提示" message:@"資料加載失敗!"];
+    [errorView show];
+}
+-(void)loadPushDetail:(NSString*)guid{
+    NSString *soap=[SoapHelper NameSpaceSoapMessage:PushWebServiceNameSpace MethodName:@"GetMessage"];
+    NSString *msg=[NSString stringWithFormat:@"<guid>%@</guid>",guid];
+    NSString *body=[NSString stringWithFormat:soap,msg];
+    [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"GetMessage" SoapMessage:body];
+}
 -(void)finishSuccessRequest:(NSString*)responseText responseData:(NSData*)requestData{
-    NSMutableDictionary *dic=[PushInfo PushToDictionary:responseText];
-    if([dic count]>0){
-        [self reLoadController:[dic objectForKey:@"Title"] withMessage:[dic objectForKey:@"Content"]];        //文件写入
-        [PushInfo writeToPushFile:dic];
+    if ([responseText length]>0) {
+        
+       NSString *xml=[responseText stringByReplacingOccurrencesOfString:@"xmlns=\"PushResult\"" withString:@""];
+        XmlParseHelper *result=[[[XmlParseHelper alloc] initWithData:xml] autorelease];
+        NSArray *arr=[result selectNodes:@"//Entity" className:@"PushResult"];
+        if ([arr count]>0) {
+            self.Entity=[arr objectAtIndex:0];
+            [CacheHelper cacheCasePushResult:self.Entity];
+            [self updateUIShow];
+        }else{
+            [self showErrorView];
+        }
     }else{
-        [AlterMessage initWithMessage:@"資料加載失敗！"];
+        [self showErrorView];
     }
 }
 -(void)finishFailRequest:(NSError*)error{
+    [self showErrorView];
 }
 //返回
 -(void)btnBackClick:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)reLoadController:(NSString*)title withMessage:(NSString*)msg{
-    
-    CGSize textSize=[title CalculateStringSize:[UIFont boldSystemFontOfSize:17] with:self.view.frame.size.width];
-    
-    UILabel *labTitle=[[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-textSize.width)/2, 2, textSize.width, textSize.height)];
-    labTitle.font=[UIFont boldSystemFontOfSize:17];
-    labTitle.textColor=[UIColor blackColor];
-    labTitle.text=title;
-    labTitle.backgroundColor=[UIColor clearColor];
-    [self.view addSubview:labTitle];
-    [labTitle release];
-    
-    CGFloat topY=self.view.frame.size.height;
-    topY-=(textSize.height+4);
-    /***
-     if (self.navigationController) {
-     topY-=self.navigationController.navigationBar.frame.size.height;
-     }
-     if (self.tabBarController) {
-     topY-=self.tabBarController.tabBar.frame.size.height;
-     }
-     ***/
-    UITextView *tv=[[UITextView alloc] initWithFrame:CGRectMake(0, textSize.height+4, self.view.frame.size.width, topY)];
-    tv.editable=NO;
-    tv.font=[UIFont systemFontOfSize:17];
-    tv.textColor=[UIColor blackColor];
-    tv.backgroundColor=[UIColor clearColor];
-    //[tv setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
-    tv.text=msg;
-    [self.view addSubview:tv];
-    [tv release];
-    
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
--(void)dealloc{
-    
-    [super dealloc];
-    [ItemData release];
 }
 @end

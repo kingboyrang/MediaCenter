@@ -13,6 +13,8 @@
 #import "PushDetailViewController.h"
 #import "AlterMessage.h"
 #import "PreviewDataSource.h"
+#import "PushToken.h"
+#import "XmlParseHelper.h"
 @implementation AppDelegate
 - (void)dealloc
 {
@@ -146,8 +148,16 @@
 #pragma mark -
 #pragma mark ServiceHelper delegate Methods
 -(void)finishSuccessRequest:(NSString*)xml responseData:(NSData*)requestData{
-    if ([xml isEqualToString:@"true"]) {
-    }else{
+    BOOL boo=NO;
+    if ([xml length]>0) {
+        xml=[xml stringByReplacingOccurrencesOfString:@"xmlns=\"Result\"" withString:@""];
+        XmlParseHelper *result=[[[XmlParseHelper alloc] initWithData:xml] autorelease];
+        XmlNode *resultNode=[result selectSingleNode:@"//Success"];
+        if ([resultNode.Value isEqualToString:@"true"]) {
+            boo=YES;
+        }
+    }
+    if (!boo) {
         [self reRegisterApns];
     }
 }
@@ -163,12 +173,13 @@
     deviceId = [deviceId stringByReplacingOccurrencesOfString:@" " withString:@""];
     deviceId = [deviceId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:deviceId forKey:@"Flag"];
-    NSString *code=[[UIDevice currentDevice] uniqueDeviceIdentifier];
+    //NSString *code=[[UIDevice currentDevice] uniqueDeviceIdentifier];
     helper=[[ServiceHelper alloc] initWithDelegate:self];
-     NSString *soapMsg=[MediaSoapMessage GCMRegisterSoap:deviceId AppCode:code];
-    [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"GCMRegister" SoapMessage:soapMsg];
+     NSString *soapMsg=[PushToken registerTokenWithDeivceId:deviceId];
+    [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"Register" SoapMessage:soapMsg];
     
 }
 //获取接收的推播信息

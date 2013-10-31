@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PushViewController : UITableViewController{
+#import "ServiceHelper.h"
+@interface PushViewController : UITableViewController<ServiceHelperDelegate>{
     int selectRow;
+    ServiceHelper *_helper;
 }
 @property(nonatomic,retain) NSMutableArray *listData;
 @end
