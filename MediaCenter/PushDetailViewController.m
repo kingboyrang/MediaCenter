@@ -16,10 +16,12 @@
 #import "SoapHelper.h"
 #import "XmlParseHelper.h"
 #import "CacheHelper.h"
+#import "ShowPushDetail.h"
 @interface PushDetailViewController (){
     UILabel *_labTitle;
-    UITextView *_textView;
+    ShowPushDetail *_textView;
 }
+-(void)initEntityValue;
 -(void)showErrorView;
 -(void)updateUIShow;
 @end
@@ -59,11 +61,7 @@
     _labTitle.textColor=[UIColor colorFromHexRGB:@"3DB5C0"];
     [self.view addSubview:_labTitle];
     
-    _textView=[[UITextView alloc] initWithFrame:CGRectMake(0, 40, self.view.bounds.size.width, self.view.bounds.size.height-40)];
-    _textView.editable=NO;
-    _textView.backgroundColor=[UIColor colorFromHexRGB:@"f4f4f4"];
-    _textView.textColor=[UIColor blackColor];
-    _textView.font=[UIFont boldSystemFontOfSize:16];
+    _textView=[[ShowPushDetail alloc] initWithFrame:CGRectMake(0, 40, self.view.bounds.size.width, self.view.bounds.size.height-40)];
     [self.view addSubview:_textView];
     
     if (self.Entity) {
@@ -75,6 +73,12 @@
     }
 
 	// Do any additional setup after loading the view.
+}
+-(void)initEntityValue{
+    if (self.Entity) {
+        self.Entity.Body=@"内容建置中...";
+    }
+    [self updateUIShow];
 }
 -(void)updateUIShow{
     CGSize size=[self.Entity.Subject CalculateStringSize:[UIFont boldSystemFontOfSize:16] with:self.view.bounds.size.width];
@@ -90,7 +94,7 @@
     frame.origin.y=_labTitle.frame.size.height;
     frame.size.height=self.view.bounds.size.height-_labTitle.frame.size.height;
     _textView.frame=frame;
-    _textView.text=self.Entity.Body;
+    [_textView setTextContent:self.Entity.Body];
 }
 -(void)showErrorView{
     WBErrorNoticeView *errorView=[WBErrorNoticeView errorNoticeInView:self.view title:@"提示" message:@"資料加載失敗!"];
@@ -113,14 +117,17 @@
             [CacheHelper cacheCasePushResult:self.Entity];
             [self updateUIShow];
         }else{
-            [self showErrorView];
+           [self showErrorView];
+            //[self initEntityValue];
         }
     }else{
-        [self showErrorView];
+        //[self showErrorView];
+        //[self initEntityValue];
     }
 }
 -(void)finishFailRequest:(NSError*)error{
-    [self showErrorView];
+    //[self showErrorView];
+    [self initEntityValue];
 }
 //返回
 -(void)btnBackClick:(id)sender{

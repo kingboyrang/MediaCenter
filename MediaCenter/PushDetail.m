@@ -59,8 +59,14 @@
 }
 -(void)setDataSource:(PushResult*)args{
     
+    if (args.Body&&[args.Body length]>0) {
+        self.labBody.text=args.Body;
+    }else{
+        self.labBody.text=@"資料建置中...";
+    }
+    
     self.labSubject.text=args.Subject;
-    self.labBody.text=args.Body;
+    
     self.labApplyDate.text=[args formatDataTw];
     
     [self setNeedsDisplay];

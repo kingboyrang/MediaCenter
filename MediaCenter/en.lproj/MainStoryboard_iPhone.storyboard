@@ -144,7 +144,7 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -558,7 +558,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="·系統介紹:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzB-BU-FwC">
@@ -574,7 +574,7 @@
                                         <rect key="frame" x="0.0" y="30" width="320" height="249"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="248"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="dcW-g1-MAl">
@@ -591,7 +591,7 @@
                                         <rect key="frame" x="0.0" y="279" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="·網站連結：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzw-mV-vbA">
@@ -612,7 +612,7 @@
                                         <rect key="frame" x="0.0" y="309" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="·版本:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-6d-kPI">
@@ -632,17 +632,17 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="YR5-lP-qxa" firstAttribute="top" secondItem="7iA-gm-XBf" secondAttribute="top" constant="9" id="0u5-Pn-UG6"/>
                                             <constraint firstItem="gnU-6d-kPI" firstAttribute="leading" secondItem="7iA-gm-XBf" secondAttribute="leading" constant="11" id="36c-Sj-Us4"/>
-                                            <constraint firstItem="gnU-6d-kPI" firstAttribute="centerY" secondItem="7iA-gm-XBf" secondAttribute="centerY" type="default" id="RvP-VA-bRr"/>
+                                            <constraint firstItem="gnU-6d-kPI" firstAttribute="top" secondItem="7iA-gm-XBf" secondAttribute="top" constant="7" id="JKH-rf-Qzn"/>
                                             <constraint firstItem="YR5-lP-qxa" firstAttribute="leading" secondItem="gnU-6d-kPI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="gkf-ca-HM9"/>
-                                            <constraint firstItem="YR5-lP-qxa" firstAttribute="top" secondItem="7iA-gm-XBf" secondAttribute="top" constant="8" id="n2Y-VJ-cgp"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="YFm-6N-NEo" detailTextLabel="dEh-G2-2pH" rowHeight="30" style="IBUITableViewCellStyleValue2" id="obq-5B-ENn">
                                         <rect key="frame" x="0.0" y="339" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="·發佈日期：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YFm-6N-NEo">
@@ -667,7 +667,7 @@
                                         <rect key="frame" x="0.0" y="369" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="宜蘭縣政府版權所有" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rvd-MT-pDn">
@@ -843,7 +843,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="14"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -903,7 +903,7 @@
                                         <rect key="frame" x="0.0" y="143" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="幸福宜蘭" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-x4-L6g">
@@ -921,9 +921,9 @@
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Hro-RN-SBb" secondAttribute="trailing" constant="42" id="9cz-95-z8n"/>
+                                            <constraint firstItem="Hro-RN-SBb" firstAttribute="centerY" secondItem="t2M-lq-Dft" secondAttribute="centerY" type="default" id="EaR-nd-WD9"/>
                                             <constraint firstItem="Aru-x4-L6g" firstAttribute="leading" secondItem="t2M-lq-Dft" secondAttribute="leading" constant="43" id="JNv-mC-LWN"/>
                                             <constraint firstItem="Hro-RN-SBb" firstAttribute="baseline" secondItem="Aru-x4-L6g" secondAttribute="baseline" type="default" id="aIh-PN-gIb"/>
-                                            <constraint firstItem="Aru-x4-L6g" firstAttribute="top" secondItem="t2M-lq-Dft" secondAttribute="top" constant="11" id="ff6-yc-HnF"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="128" id="2u0-cb-2PS">
@@ -981,10 +981,13 @@
                                         <rect key="frame" x="0.0" y="315" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="熱門影音" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CX7-G0-bYK">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="BRh-W3-JnB"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -998,9 +1001,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="CX7-G0-bYK" firstAttribute="top" secondItem="xHB-oo-jUs" secondAttribute="top" constant="11" id="8Ln-gK-Wd1"/>
+                                            <constraint firstItem="CX7-G0-bYK" firstAttribute="top" secondItem="w0F-Ld-MDN" secondAttribute="top" type="default" id="LwV-Hb-uRI"/>
                                             <constraint firstAttribute="trailing" secondItem="w0F-Ld-MDN" secondAttribute="trailing" constant="42" id="SAL-fi-t7A"/>
                                             <constraint firstItem="w0F-Ld-MDN" firstAttribute="baseline" secondItem="CX7-G0-bYK" secondAttribute="baseline" type="default" id="YrA-XK-wiJ"/>
+                                            <constraint firstItem="CX7-G0-bYK" firstAttribute="top" secondItem="xHB-oo-jUs" secondAttribute="top" constant="10" id="vlm-WB-ILX"/>
                                             <constraint firstItem="CX7-G0-bYK" firstAttribute="leading" secondItem="xHB-oo-jUs" secondAttribute="leading" constant="43" id="y1Y-OL-gKC"/>
                                         </constraints>
                                     </tableViewCell>
@@ -1256,7 +1260,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" backgroundImage="facebook_box.png">
-                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted">
@@ -1282,7 +1286,7 @@
                                         <rect key="frame" x="0.0" y="90" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="宜蘭縣政府" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xq-G3-jXn">
@@ -1360,7 +1364,7 @@
                                         <rect key="frame" x="0.0" y="210" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="數位出版品" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOD-sm-RoG">
@@ -1438,7 +1442,7 @@
                                         <rect key="frame" x="0.0" y="330" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="最新消息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8B-sl-vfc">
@@ -1516,7 +1520,7 @@
                                         <rect key="frame" x="0.0" y="450" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="福利資訊" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHv-nG-Qoz">
@@ -1727,140 +1731,6 @@
         <image name="push.png" width="256" height="256"/>
         <image name="trebox.png" width="256" height="256"/>
     </resources>
-    <classes>
-        <class className="AountUSViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AountUSViewController.h"/>
-        </class>
-        <class className="BasicTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BasicTableViewController.h"/>
-        </class>
-        <class className="BasicViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BasicViewController.h"/>
-        </class>
-        <class className="BenefitViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BenefitViewController.h"/>
-        </class>
-        <class className="CommonMetaDetailViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommonMetaDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnNextClick:"/>
-                <relationship kind="action" name="btnPrevClick:"/>
-                <relationship kind="action" name="segmentChange:"/>
-                <relationship kind="outlet" name="barbuttonNext" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="barbuttonPrev" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cellCName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellDate" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellDtype" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellExplain" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellFileType" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellMemo" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="cellShowImg" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="DistrictViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DistrictViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnSearchclick:"/>
-                <relationship kind="action" name="buttonLinkClick:"/>
-            </relationships>
-        </class>
-        <class className="HappyTypeViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HappyTypeViewController.h"/>
-        </class>
-        <class className="HappyViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HappyViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonSearchClick:"/>
-                <relationship kind="outlet" name="tabView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="HotViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HotViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnSearchClick:"/>
-            </relationships>
-        </class>
-        <class className="IndexViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IndexViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="SegmentSwitchView:"/>
-                <relationship kind="action" name="btnSearchclick:"/>
-                <relationship kind="outlet" name="SegmentSwitch" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="JobAreaViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JobAreaViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="couponButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="groupbuyButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="slidLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MenuViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
-        </class>
-        <class className="MovieFavoriteViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieFavoriteViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleEdit:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewMovieViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewMovieViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnSearchclick:"/>
-            </relationships>
-        </class>
-        <class className="NewsDetailViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="NewsViewController" superclassName="BasicViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsViewController.h"/>
-        </class>
-        <class className="OrganViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OrganViewController.h"/>
-        </class>
-        <class className="OrgenMovieViewController" superclassName="BasicTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OrgenMovieViewController.h"/>
-        </class>
-        <class className="PreviewImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewImageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonCloseView:"/>
-                <relationship kind="action" name="buttonNextImage:"/>
-                <relationship kind="action" name="buttonPrevImage:"/>
-                <relationship kind="outlet" name="barbuttonBg" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="ProductTypeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductTypeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnSearchclick:"/>
-            </relationships>
-        </class>
-        <class className="PushDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PushDetailViewController.h"/>
-        </class>
-        <class className="PushViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PushViewController.h"/>
-        </class>
-        <class className="RelevantViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RelevantViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonOpenUrlClick:"/>
-            </relationships>
-        </class>
-        <class className="mainRootViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/mainRootViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
