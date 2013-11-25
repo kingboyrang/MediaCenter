@@ -59,8 +59,7 @@
     if ([searchResult length]>0) {
         NSString *urlString=[searchResult stringByReplacingOccurrencesOfString:@"<url>" withString:@""];
         urlString=[urlString stringByReplacingOccurrencesOfString:@"</url>" withString:@""];
-        urlString=[NSString stringWithFormat:@"<a color='#666666' href='%@'>%@</a>",urlString,urlString];
-        
+        urlString=[NSString stringWithFormat:@"<font face='HelveticaNeue-CondensedBold' color='#3DB5C0'><a  href='%@'>%@</a></font>",urlString,urlString];
         str=[str stringByReplacingOccurrencesOfString:searchResult withString:urlString];
     }
     return  str;

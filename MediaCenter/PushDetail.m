@@ -60,7 +60,7 @@
 -(void)setDataSource:(PushResult*)args{
     
     if (args.Body&&[args.Body length]>0) {
-        self.labBody.text=args.Body;
+        self.labBody.text=args.HtmlBody;
     }else{
         self.labBody.text=@"資料建置中...";
     }

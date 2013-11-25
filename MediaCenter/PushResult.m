@@ -68,6 +68,14 @@
     }
     return field;
 }
+-(NSString*)HtmlBody{
+    if (_Body&&[_Body length]>0) {
+        NSString *str=[_Body stringByReplacingOccurrencesOfString:@"<url>" withString:@""];
+        str=[str stringByReplacingOccurrencesOfString:@"</url>" withString:@""];
+        return str;
+    }
+    return @"";
+}
 //通报时间
 -(NSString*)formatDataTw{
     NSString *date=[self getPropertyValue:self.SendTime];
