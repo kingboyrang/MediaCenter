@@ -33,13 +33,14 @@
 #define PushWebServiceUrl @"http://60.251.51.217/Pushs.Admin/WebServices/Push.asmx"
 #define PushWebServiceNameSpace @"http://tempuri.org/"
 
+
 /***
 //大陆
-#define defaultWebServiceUrl @"http://192.168.123.151/elandmdc.sys/mdc.asmx"
+#define defaultWebServiceUrl @"http://dmc.e-land.gov.tw:8080/admin/MDC.asmx"
 #define defaultWebServiceNameSpace @"http://tempuri.org/"
 //推播信息webservice
-#define PushWebServiceUrl @"http://210.69.148.65/ElandWE.Admin/WebServices/Webservice.asmx"
-#define PushWebServiceNameSpace @"http://210.69.148.65/ELandWE.Admin/WebServices/"
+#define PushWebServiceUrl @"http://192.168.123.150/Pushs.Admin/WebServices/Push.asmx"
+#define PushWebServiceNameSpace @"http://tempuri.org/"
 ***/
 
 #define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]

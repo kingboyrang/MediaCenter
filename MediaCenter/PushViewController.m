@@ -59,17 +59,18 @@
 -(void)loadAndUpdatePush{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *token=[userDefaults objectForKey:@"Flag"];
-    //NSString *token=@"6997eda072e4e60784a108bb9a98a777f737403caaaa2ed22f69580d14a411f5";
+    //NSString *token=@"762e025eafe03fdbb13b2f03e6224d5216dfcc78dbeebfbb3147c9973d114ecc";
     if ([token length]==0)return;
     
     NSString *soap=[SoapHelper NameSpaceSoapMessage:PushWebServiceNameSpace MethodName:@"GetMessages"];
     NSString *msg=[NSString stringWithFormat:@"<token>%@</token>",token];
     NSString *body=[NSString stringWithFormat:soap,msg];
-    [_helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"GetMessage" SoapMessage:body];
+    [_helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"GetMessages" SoapMessage:body];
 }
 -(void)finishSuccessRequest:(NSString*)responseText responseData:(NSData*)requestData{
     if ([responseText length]>0) {
         NSString *xml=[responseText stringByReplacingOccurrencesOfString:@"xmlns=\"Push[]\"" withString:@""];
+        
         XmlParseHelper *result=[[[XmlParseHelper alloc] initWithData:xml] autorelease];
         NSArray *arr=[result selectNodes:@"//Push" className:@"PushResult"];
         if (arr&&[arr count]>0) {
@@ -95,9 +96,9 @@
     UIViewController *destination = segue.destinationViewController;
     //NSString *guid=[[self.listData objectAtIndex:selectRow] objectForKey:@"GUID"];
     //[destination setValue:@"7a4d1b42-e0c1-4020-9ae9-c879262212ec" forKey:@"GUID"];
-     SEL sel=NSSelectorFromString(@"ItemData");
+     SEL sel=NSSelectorFromString(@"Entity");
     if ([destination respondsToSelector:sel]) {
-         [destination setValue:[self.listData objectAtIndex:selectRow] forKey:@"ItemData"];
+         [destination setValue:[self.listData objectAtIndex:selectRow] forKey:@"Entity"];
     }
 }
 - (void)didReceiveMemoryWarning
@@ -127,7 +128,7 @@
     static NSString *CellIdentifier = @"CellPushIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
-        cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         PushDetail *detail=[[PushDetail alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 53)];
         detail.tag=100;
         [cell.contentView addSubview:detail];
@@ -212,6 +213,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     selectRow=indexPath.row;
+    [self performSegueWithIdentifier:@"pushDetailSegment" sender:nil];
 }
 -(void)dealloc{
     [super dealloc];

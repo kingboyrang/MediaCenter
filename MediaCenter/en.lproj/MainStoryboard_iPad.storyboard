@@ -39,32 +39,6 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellPushIdentifier" textLabel="6Jd-3a-mPh" detailTextLabel="jgY-nU-9j2" style="IBUITableViewCellStyleSubtitle" id="olk-Z0-Wdx">
-                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="748" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jd-3a-mPh">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgY-nU-9j2">
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <segue destination="1Fj-VM-L0s" kind="push" id="4C6-ke-8XQ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="s5L-EG-zkP" id="Bfq-iI-1Tl"/>
                             <outlet property="delegate" destination="s5L-EG-zkP" id="EH6-f4-jCP"/>
@@ -78,6 +52,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <connections>
+                        <segue destination="1Fj-VM-L0s" kind="push" identifier="pushDetailSegment" id="ulJ-tf-omd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Orm-9j-rz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ee-MH-kkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4577" y="-757"/>
+            <point key="canvasLocation" x="4696" y="-807"/>
         </scene>
         <!--Orgen Movie View Controller-->
         <scene sceneID="T2z-Fq-efm">
@@ -1843,6 +1820,9 @@
         </class>
         <class className="PushViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PushViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonEditClick:"/>
+            </relationships>
         </class>
         <class className="RelevantViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RelevantViewController.h"/>
@@ -1860,9 +1840,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SQT-0U-0c1"/>
         <segue reference="IH8-FM-23e"/>
-        <segue reference="wRF-ai-jbO"/>
         <segue reference="Fgb-QC-EB1"/>
+        <segue reference="PBo-pn-O6T"/>
+        <segue reference="SQT-0U-0c1"/>
     </inferredMetricsTieBreakers>
 </document>

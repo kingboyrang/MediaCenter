@@ -76,7 +76,7 @@
 }
 -(void)initEntityValue{
     if (self.Entity) {
-        self.Entity.Body=@"内容建置中...";
+        self.Entity.Body=@"內容建置中...";
     }
     [self updateUIShow];
 }
@@ -121,13 +121,13 @@
             //[self initEntityValue];
         }
     }else{
-        //[self showErrorView];
+        [self showErrorView];
         //[self initEntityValue];
     }
 }
 -(void)finishFailRequest:(NSError*)error{
-    //[self showErrorView];
-    [self initEntityValue];
+    [self showErrorView];
+    //[self initEntityValue];
 }
 //返回
 -(void)btnBackClick:(id)sender{
