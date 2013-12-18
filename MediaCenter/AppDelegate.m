@@ -15,6 +15,8 @@
 #import "PreviewDataSource.h"
 #import "PushToken.h"
 #import "XmlParseHelper.h"
+#import "ASIHTTPRequest.h"
+#import "AdminURL.h"
 @implementation AppDelegate
 - (void)dealloc
 {
@@ -30,8 +32,39 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound)];
     }
 }
+-(void)updateAccessInterface{
+   ASIHTTPRequest *request=[ASIHTTPRequest requestWithURL:[NSURL URLWithString:DataAccessURL]];
+    [request setCompletionBlock:^{
+        if (request.responseStatusCode==200) {
+            NSString *xml=[request.responseString stringByReplacingOccurrencesOfString:@"xmlns=\"AdminURL[]\"" withString:@""];
+            XmlParseHelper *parse=[[[XmlParseHelper alloc] initWithData:xml] autorelease];
+            NSArray *source=[parse selectNodes:@"//AdminURL" className:@"AdminURL"];
+            NSMutableArray *arr=[NSMutableArray arrayWithArray:DataServicesSource];
+            if (source&&[source count]>0) {
+                for (AdminURL *item in source) {
+                    if ([item.name isEqualToString:@"elandmcwebserviceurl"]&&[item.url length]>0) {
+                        arr[0]=item.url;
+                    }
+                    if ([item.name isEqualToString:@"pushsadminurl"]&&[item.url length]>0) {
+                        arr[1]=item.url;
+                    }
+                }
+                [arr writeToFile:DataWebPath atomically:YES];
+            }
+
+        }
+        
+    }];
+    [request setFailedBlock:^{
+        
+    }];
+    [request startAsynchronous];
+    
+    
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self updateAccessInterface];
     application.applicationIconBadgeNumber=0;
     //[fileName stringByDeletingPathExtension];
     //创建文件夹
@@ -64,8 +97,7 @@
 }
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+   
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -79,12 +111,7 @@
     
     
     [self reRegisterApns];//注册推播
-    
-   
-    
-    
-    
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self updateAccessInterface];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

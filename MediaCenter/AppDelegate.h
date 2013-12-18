@@ -19,4 +19,5 @@
 -(void)reRegisterApns;
 //推播处理
 -(void)pushHandler:(NSDictionary*)userInfo;
+-(void)updateAccessInterface;
 @end

@@ -179,6 +179,8 @@
 		01E5BD5B17F56E9D0020A83E /* benfit.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BD5917F56E9D0020A83E /* benfit.png */; };
 		01E5BD5C17F56E9D0020A83E /* job.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BD5A17F56E9D0020A83E /* job.png */; };
 		01E7B5AE182256B00086580A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E7B5AD182256B00086580A /* GDataXMLNode.m */; };
+		01F3FCF5186177D8003EAE0D /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01F3FCF4186177D8003EAE0D /* Config.plist */; };
+		01F3FCF818617A1D003EAE0D /* AdminURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3FCF718617A1D003EAE0D /* AdminURL.m */; };
 		269F2C8B165FAFBC004F4AB9 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8A165FAFBC004F4AB9 /* FileHelper.m */; };
 		269F2C8F165FB70F004F4AB9 /* MovieFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C8E165FB70F004F4AB9 /* MovieFavoriteViewController.m */; };
 		269F2C92165FC6B4004F4AB9 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F2C91165FC6B4004F4AB9 /* News.m */; };
@@ -480,6 +482,9 @@
 		01E7B5AB182256B00086580A /* GDataTargetNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataTargetNamespace.h; sourceTree = "<group>"; };
 		01E7B5AC182256B00086580A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		01E7B5AD182256B00086580A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		01F3FCF4186177D8003EAE0D /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		01F3FCF618617A1D003EAE0D /* AdminURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminURL.h; sourceTree = "<group>"; };
+		01F3FCF718617A1D003EAE0D /* AdminURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminURL.m; sourceTree = "<group>"; };
 		269F2C89165FAFBC004F4AB9 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		269F2C8A165FAFBC004F4AB9 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		269F2C8D165FB70F004F4AB9 /* MovieFavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieFavoriteViewController.h; sourceTree = "<group>"; };
@@ -719,6 +724,7 @@
 				01B6E9E51648968700A43E74 /* Default@2x.png */,
 				01B6E9E71648968700A43E74 /* Default-568h@2x.png */,
 				01C1BEE8167EF4BF0034A023 /* happyType.plist */,
+				01F3FCF4186177D8003EAE0D /* Config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1006,6 +1012,8 @@
 		01CCE12A165C9B940093ED92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01F3FCF618617A1D003EAE0D /* AdminURL.h */,
+				01F3FCF718617A1D003EAE0D /* AdminURL.m */,
 				014DC301182240D50050DFB8 /* PushResult.h */,
 				014DC302182240D50050DFB8 /* PushResult.m */,
 				014DC2F418223C990050DFB8 /* PushToken.h */,
@@ -1250,6 +1258,7 @@
 				013FB7D317E1F41A0077770E /* youtube.html in Resources */,
 				01E5BD5B17F56E9D0020A83E /* benfit.png in Resources */,
 				01E5BD5C17F56E9D0020A83E /* job.png in Resources */,
+				01F3FCF5186177D8003EAE0D /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1382,7 @@
 				0187522D17F2DF0700E9E703 /* JobDetailViewController.m in Sources */,
 				01E7B5AE182256B00086580A /* GDataXMLNode.m in Sources */,
 				01B18AB7183F42C4005C9BFF /* ShowPushDetail.m in Sources */,
+				01F3FCF818617A1D003EAE0D /* AdminURL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

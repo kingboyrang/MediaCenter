@@ -20,7 +20,6 @@
 +(BOOL)isExistsFile:(NSString*)fileName{
     NSFileManager *fileManager = [NSFileManager defaultManager];
 	BOOL b=[fileManager fileExistsAtPath:fileName];
-	[fileManager release];
 	return b;
     /**
     NSString *filepath=[self fileSavePath:fileName];
