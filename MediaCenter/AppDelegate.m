@@ -41,12 +41,28 @@
             NSArray *source=[parse selectNodes:@"//AdminURL" className:@"AdminURL"];
             NSMutableArray *arr=[NSMutableArray arrayWithArray:DataServicesSource];
             if (source&&[source count]>0) {
+                 NSString *url2=@"";
                 for (AdminURL *item in source) {
                     if ([item.name isEqualToString:@"elandmcwebserviceurl"]&&[item.url length]>0) {
                         arr[0]=item.url;
                     }
                     if ([item.name isEqualToString:@"pushsadminurl"]&&[item.url length]>0) {
-                        arr[1]=item.url;
+                        url2=item.url;
+                    }
+                }
+                if ([url2 length]>0) {
+                    if (![url2 isEqualToString:arr[1]]) {
+                        arr[1]=url2;
+                        //重新注册
+                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                        if ([userDefaults objectForKey:@"Flag"]!=nil)
+                        {
+                            NSString *soapMsg=[PushToken registerTokenWithDeivceId:[userDefaults objectForKey:@"Flag"]];
+                            [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"Register" SoapMessage:soapMsg];
+                            
+                        }else{
+                           [self reRegisterApns];
+                        }
                     }
                 }
                 [arr writeToFile:DataWebPath atomically:YES];
@@ -64,6 +80,7 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+     helper=[[ServiceHelper alloc] initWithDelegate:self];
     [self updateAccessInterface];
     application.applicationIconBadgeNumber=0;
     //[fileName stringByDeletingPathExtension];
@@ -204,7 +221,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:deviceId forKey:@"Flag"];
     //NSString *code=[[UIDevice currentDevice] uniqueDeviceIdentifier];
-    helper=[[ServiceHelper alloc] initWithDelegate:self];
+   
      NSString *soapMsg=[PushToken registerTokenWithDeivceId:deviceId];
     [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"Register" SoapMessage:soapMsg];
     
