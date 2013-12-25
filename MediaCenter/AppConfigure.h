@@ -13,6 +13,8 @@
 #define DataCaseUrlPre [DataServicesSource objectAtIndex:0]
 #define DataPushUrlPre [DataServicesSource objectAtIndex:1]
 
+
+
 //测试
 #define defaultWebServiceUrl [NSString stringWithFormat:@"%@MDC.asmx",DataCaseUrlPre]
 #define defaultWebServiceNameSpace @"http://tempuri.org/"

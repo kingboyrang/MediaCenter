@@ -2,7 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>http://dmc.e-land.gov.tw:8080/admin/</string>
-	<string>http://60.251.51.217/Pushs.Admin/</string>
+	<string>http://DMC.e-land.gov.tw/admin/</string>
+	<string>http://cir.e-land.gov.tw:8080/pushs/
+</string>
 </array>
 </plist>
