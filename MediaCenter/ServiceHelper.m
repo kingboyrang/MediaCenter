@@ -55,7 +55,7 @@
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soap length]];
 	
     //以下对请求信息添加属性前四句是必有的，第五句是soap信息。
-	[request addRequestHeader:@"Host" value:[webUrl host]];
+	[request addRequestHeader:@"Host" value:webUrl.host&&[webUrl.host length]>0?webUrl.host:@""];
     [request addRequestHeader:@"Content-Type" value:@"text/xml; charset=utf-8"];
 	[request addRequestHeader:@"Content-Length" value:msgLength];
     [request addRequestHeader:@"SOAPAction" value:[NSString stringWithFormat:@"%@%@",nameSapce,strMethod]];
@@ -106,6 +106,7 @@
     [self.httpRequest setDelegate:nil];
     [self.httpRequest cancel];
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", WebURL]];
+    
 	//[httpRequest setURL:url];
 
     [self setHttpRequest:[ASIHTTPRequest requestWithURL:url]];
@@ -113,7 +114,7 @@
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMsg length]];
 	
     //以下对请求信息添加属性前四句是必有的，第五句是soap信息。
-	[self.httpRequest addRequestHeader:@"Host" value:[url host]];
+	[self.httpRequest addRequestHeader:@"Host" value:url.host&&[url.host length]>0?url.host:@""];
     [self.httpRequest addRequestHeader:@"Content-Type" value:@"text/xml; charset=utf-8"];
 	[self.httpRequest addRequestHeader:@"Content-Length" value:msgLength];
     [self.httpRequest addRequestHeader:@"SOAPAction" value:[NSString stringWithFormat:@"%@%@",nameSapce,strMethod]];

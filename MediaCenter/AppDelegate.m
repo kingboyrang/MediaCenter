@@ -17,6 +17,7 @@
 #import "XmlParseHelper.h"
 #import "ASIHTTPRequest.h"
 #import "AdminURL.h"
+#import "NSString+StringExtension.h"
 @implementation AppDelegate
 - (void)dealloc
 {
@@ -44,10 +45,10 @@
                  NSString *url2=@"";
                 for (AdminURL *item in source) {
                     if ([item.name isEqualToString:@"elandmcwebserviceurl"]&&[item.url length]>0) {
-                        arr[0]=item.url;
+                        arr[0]=[item.url Trim];
                     }
                     if ([item.name isEqualToString:@"pushsadminurl"]&&[item.url length]>0) {
-                        url2=item.url;
+                        url2=[item.url Trim];
                     }
                 }
                 if ([url2 length]>0) {
@@ -82,6 +83,7 @@
 {
      helper=[[ServiceHelper alloc] initWithDelegate:self];
     [self updateAccessInterface];
+   
     application.applicationIconBadgeNumber=0;
     //[fileName stringByDeletingPathExtension];
     //创建文件夹
@@ -106,7 +108,7 @@
     int cacheSizeDisk = 32*1024*1024; // 32MB
     NSURLCache *sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
     [NSURLCache setSharedURLCache:sharedCache];
-    
+   
     return YES;
 }
 -(void)NetWorkHandler:(NetworkStatus)status IsConnection:(BOOL)hasConnection{
@@ -221,8 +223,10 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:deviceId forKey:@"Flag"];
     //NSString *code=[[UIDevice currentDevice] uniqueDeviceIdentifier];
-   
      NSString *soapMsg=[PushToken registerTokenWithDeivceId:deviceId];
+     //NSString *soapMsg=[PushToken registerTokenWithDeivceId:@"762e025eafe03fdbb13b2f03e6224d5216dfcc78dbeebfbb3147c9973d114ecc"];
+    //我的设置token
+    //762e025eafe03fdbb13b2f03e6224d5216dfcc78dbeebfbb3147c9973d114ecc
     [helper AsyCommonServiceRequest:PushWebServiceUrl ServiceNameSpace:PushWebServiceNameSpace ServiceMethodName:@"Register" SoapMessage:soapMsg];
     
 }

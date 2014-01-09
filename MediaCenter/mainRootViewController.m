@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotifice:) name:@"pushDetail" object:nil];
+    
 	// Do any additional setup after loading the view.
 }
 -(void)receiveNotifice:(NSNotification*)notice{
