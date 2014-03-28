@@ -3,6 +3,6 @@
 <plist version="1.0">
 <array>
 	<string>http://DMC.e-land.gov.tw/admin/</string>
-	<string>http://cir.e-land.gov.tw:8080/pushs/</string>
+	<string>http://CIRMSG.e-land.gov.tw/</string>
 </array>
 </plist>
