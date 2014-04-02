@@ -197,6 +197,7 @@
     BOOL boo=NO;
     if ([xml length]>0) {
         xml=[xml stringByReplacingOccurrencesOfString:@"xmlns=\"Result\"" withString:@""];
+        
         XmlParseHelper *result=[[[XmlParseHelper alloc] initWithData:xml] autorelease];
         XmlNode *resultNode=[result selectSingleNode:@"//Success"];
         if ([resultNode.Value isEqualToString:@"true"]) {

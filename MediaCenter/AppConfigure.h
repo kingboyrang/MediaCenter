@@ -18,7 +18,7 @@
 #define defaultWebServiceNameSpace @"http://tempuri.org/"
 //推播信息webservice
 #define PushWebServiceUrl [NSString stringWithFormat:@"%@WebServices/Push.asmx",DataPushUrlPre]
-#define PushWebServiceNameSpace @"http://tempuri.org/"
+#define PushWebServiceNameSpace @"http://CIRMSG.e-land.gov.tw/"
 
 
 #define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
